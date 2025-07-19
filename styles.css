@@ -1,0 +1,60 @@
+*{
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+:root{
+    --level: 3;
+}
+
+.tile{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 6px 1px 20px 0px rgba(0,0,0,0.65);
+
+}
+
+span.tile-number {
+    z-index: 2;
+    color: red;
+    font-size: 2rem;
+    position: absolute;
+    left: 10px;
+}
+.tile img{
+    height: calc(var(--level)*100%);
+    width: calc(var(--level)*100%);
+    position: absolute;
+}
+
+
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    
+}
+button{
+    height: 60px;
+    width: 120px;
+
+}
+.board-game{
+    height: 80vh;
+    width: 80vh;
+    margin: auto;   
+    display: grid;
+    /* background-image: url(sample_pic.jpg);
+    background-size: contain; */
+    grid-template-columns: repeat(var(--level),1fr); 
+    grid-template-rows: repeat(var(--level),1fr); 
+}
+.playing-picture{
+    height: 100%;
+    width: 100%;
+}
+
+
