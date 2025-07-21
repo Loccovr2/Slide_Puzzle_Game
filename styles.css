@@ -1,5 +1,5 @@
 *{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     box-sizing: border-box;
 }
 :root{
@@ -9,11 +9,37 @@
 .tile{
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow: clip;
     position: relative;
-    box-shadow: 6px 1px 20px 0px rgba(0,0,0,0.65);
+    /* box-shadow: 6px 1px 20px 0px rgba(0,0,0,0.65); */
+    cursor: pointer;
+    margin: auto;
+    /* transition: transform 0.2s ease; */
+    z-index: 5;
+        border: 2px solid transparent;
 
 }
+.blank{
+    cursor: context-menu;
+}
+.tile:hover{
+    z-index: 5;
+}
+
+.tile::before{
+    box-sizing: unset;
+    position: absolute;
+    content: '';
+    width: calc(100% + 10px);    
+    height: calc(100% + 2px);
+    background-image: conic-gradient(red,blue,green,yellow,red);
+    /* z-index: 3; */
+    padding-inline: 3px;
+        border: 5px solid transparent;
+padding-
+    
+}
+
 
 span.tile-number {
     z-index: 2;
@@ -51,9 +77,9 @@ button{
     grid-template-columns: repeat(var(--level),1fr); 
     grid-template-rows: repeat(var(--level),1fr); 
     /* grid-template-areas: 
-        'tile1 tile3 tile2'
-        'tile7 tile5 tile4'
-        'tile8 tile6 tile9'; */
+        'tile1 tile2 tile3'
+        'tile4 tile5 tile6'
+        'tile7 tile8 tile9'; */
 }
 .playing-picture{
     height: 100%;
