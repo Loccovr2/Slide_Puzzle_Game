@@ -26,9 +26,8 @@ span.tile-number {
     height: calc(var(--level)*100%);
     width: calc(var(--level)*100%);
     position: absolute;
+    overflow: hidden;
 }
-
-
 
 
 body {
@@ -51,6 +50,10 @@ button{
     background-size: contain; */
     grid-template-columns: repeat(var(--level),1fr); 
     grid-template-rows: repeat(var(--level),1fr); 
+    /* grid-template-areas: 
+        'tile1 tile3 tile2'
+        'tile7 tile5 tile4'
+        'tile8 tile6 tile9'; */
 }
 .playing-picture{
     height: 100%;

@@ -9,11 +9,11 @@
 </head>
 <body>
 
-    <button id="3x3">3x3</button>
-    <button id="4x4">4x4</button>
-    <button id="merge"X> Merge </button>
+    <button id="3x3" onclick="buildGrid(3)">3x3</button>
+    <button id="4x4" onclick="buildGrid(4)">4x4</button>
+    <button id="merge"> Merge </button>
 
-    <div class="board-game">
+    <div class="board-game" id="board">
         <div class="tile" id="tile1"><span class="tile-number">1</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile2"><span class="tile-number">2</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile3"><span class="tile-number">3</span><img src="sample_pic.jpg"></div>
@@ -24,6 +24,10 @@
         <div class="tile" id="tile8"><span class="tile-number">8</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div>
     </div>
+    <button id="testbtn">test</button>
+    <p id="test" >hello: </p>
+
+
     <script src="script.js"></script>
 </body>
 </html>
