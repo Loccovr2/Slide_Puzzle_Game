@@ -6,6 +6,10 @@
     --level: 3;
 }
 
+body{
+    background-color: rgb(21, 3, 38);
+}
+
 .tile{
     height: 100%;
     width: 100%;
@@ -15,29 +19,33 @@
     cursor: pointer;
     margin: auto;
     /* transition: transform 0.2s ease; */
-    z-index: 5;
-        border: 2px solid transparent;
-
+    z-index: 1;
+    border: 1px solid transparent  ;
+    
 }
 .blank{
     cursor: context-menu;
+    display: none;
 }
 .tile:hover{
-    z-index: 5;
+  border-width: 4px;
+  border-style: solid;
+  border-image: radial-gradient(circle,rgb(97, 63, 251) 50%, rgb(252, 70, 70) 100%) 1;
+  box-shadow:0 0 100px #FF0000;
+  z-index: 3;
+
 }
 
 .tile::before{
-    box-sizing: unset;
     position: absolute;
     content: '';
-    width: calc(100% + 10px);    
-    height: calc(100% + 2px);
-    background-image: conic-gradient(red,blue,green,yellow,red);
+    width: 300px ;  
+    height: 300px;
+    /* background-image: conic-gradient(red,blue,green,yellow,red); */
     /* z-index: 3; */
-    padding-inline: 3px;
-        border: 5px solid transparent;
-padding-
-    
+    overflow: visible;
+    z-index: 3;
+;
 }
 
 
@@ -52,7 +60,8 @@ span.tile-number {
     height: calc(var(--level)*100%);
     width: calc(var(--level)*100%);
     position: absolute;
-    overflow: hidden;
+    overflow: clip;
+
 }
 
 
@@ -60,18 +69,23 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    
+
 }
 button{
     height: 60px;
     width: 120px;
 
 }
+
 .board-game{
+    position: relative;
     height: 80vh;
     width: 80vh;
     margin: auto;   
     display: grid;
+    /* box-shadow: 0 0 200px #0606a8, 0 0 500px #11036c; */
+    /* background-image: conic-gradient(red,blue,green,yellow,red); */
+    background-color: rgb(0, 0, 0);
     /* background-image: url(sample_pic.jpg);
     background-size: contain; */
     grid-template-columns: repeat(var(--level),1fr); 
@@ -81,9 +95,41 @@ button{
         'tile4 tile5 tile6'
         'tile7 tile8 tile9'; */
 }
-.playing-picture{
-    height: 100%;
-    width: 100%;
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
 }
+.board-game::before, .board-game::after{
+    z-index: -1;
+    opacity: 1;
+    position: absolute;
+    content: '';
+    height: calc(100% + 14px);  
+    width: calc(100% + 14px);
+    top: -7px;
+    left: -7px;
+    background-image: conic-gradient(from var(--angle),#880404 0%,rgb(0, 144, 0) 40%,rgb(203, 230, 82) 60%,rgb(255, 98, 124) 90%,red 100%);
+    animation: 3s spin linear infinite;
+    filter: blur(2px);
+    box-shadow: 0 0 10px #9494ec, 0 0 500px #2b1b94;
+
+}
+
+.board-game::after{
+    filter: blur(10px);
+    opacity: 0.5;
+}   
+
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;  
+    }
+}
+
+
 
 
