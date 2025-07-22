@@ -6,6 +6,17 @@
     --level: 3;
 }
 
+::-webkit-scrollbar{
+background: linear-gradient(to right, #00c3ff, #ffff1c);
+width: 10px;
+border-radius: 100px;
+}
+::-webkit-scrollbar-thumb{
+background: linear-gradient(to right, #ee0979, #ff6a00);   
+border-radius: 100px;
+
+}
+
 body{
     background-color: rgb(21, 3, 38);
     overflow:scroll ;
@@ -90,7 +101,7 @@ button{
     display: grid;
     /* box-shadow: 0 0 200px #0606a8, 0 0 500px #11036c; */
     /* background-image: conic-gradient(red,blue,green,yellow,red); */
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0,0.8);
     /* background-image: url(sample_pic.jpg);
     background-size: contain; */
     grid-template-columns: repeat(var(--level),1fr); 
@@ -184,8 +195,8 @@ span{
 
 /* Gallery */
 .gallery{
-    width: 160px;
-    height: calc(100% - 80px);
+    width: 180px;
+    height: calc(100% - 77px);
     background-color: #07097c;
     position: absolute;
     top: 120px;
@@ -194,8 +205,11 @@ span{
 }
 .gallery-name{
     font-size: 2rem;
-    background-color: #880404;
+    background-color: #c50202;
     border-top-right-radius: 50px;
+    text-align: center;
+    color: yellow;
+    box-shadow: 0 0 40px #95a000, 0 0 100px #00178a;
 }
 
 .gallery:hover{
@@ -203,12 +217,16 @@ span{
 }
 .index-picture{
     width: 100%;
-    height: 100%;
+    height: calc(100%+10px);
     display: grid;
     row-gap: 10px;
     /* grid-auto-flow: column; */
     grid-template-columns: 1fr;
-    background-color: green;
+    background-color: rgb(1, 46, 1, 0.7);
+    justify-items: center;
+    align-items: center;     
+    box-shadow: 0 0 40px #407f00, 0 0 100px #0e0064;
+
 
 }
 .index-picture:hover{
@@ -228,3 +246,35 @@ span{
     border-radius: 4px;
     border: 1px solid black;
 }
+.index-picture img:hover{
+    border: none;
+}
+
+.gallery-pic,.choosing-pic{
+    position: relative;
+}
+.gallery-pic::before,.choosing-pic::before {
+    position: absolute;
+    content: '';
+    width: calc(100% + 8px);
+    height: calc(100% - 4px) ;
+    top: 3px;
+    left: -4px;    
+    border-radius: 4px;
+    background-image: conic-gradient(from var(--angle),
+    #fff000, #00ff0e,
+    #0099ff, #001aff, #ff0000,
+    #ff0055, #ff0000, #0099ff,
+    #00a1ff, #a200ff,#fff000);    
+    z-index: 1;
+    animation: 3s spin linear infinite;
+    display: none;
+}
+.choosing-pic::before{
+    display: initial;
+}
+.gallery-pic:hover:before{
+    display: initial;
+}
+
+

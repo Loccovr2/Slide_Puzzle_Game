@@ -1,7 +1,7 @@
 
 const boardGame=document.querySelector('.board-game');
 let size;
-let pickingPicture = `./assets/sample_pic.jpg`;
+let pickingPicture = `./assets/parrot.webp`;
 // const button = document.getElementById("testbtn");
 // var  playingTable;
 
@@ -49,6 +49,7 @@ function buildGrid(p1){
         const label = document.createElement('span');
         label.className = 'tile-number';
         label.textContent = i;
+        label.style.visibility='hidden';
         tile.appendChild(label);
         // Tạo thẻ img và gán src, alt
         const img = document.createElement('img');
@@ -65,8 +66,12 @@ function buildGrid(p1){
       // }
       // boardGame.style.gridTemplateRows = `repeat(${p1}, 1fr)`;
       // boardGame.style.gridTemplateColumns = `repeat(${p1}, 1fr)`;
-
       setPositon(p1);
+      const boardArr = shuffleByMoves(size, 400);
+      playingTable=boardArr;
+      // alert(playingTable);
+      // alert(playingTable.indexOf(8))
+      renderAreas(boardArr, size);
     };
 function setPositon(p1){
     for(let i=0; i< p1 ; i++){
@@ -96,7 +101,7 @@ function setPositon(p1){
     return Array.from({length: size*size}, (_,i) => i);
   }
   // Shuffle bằng các bước di chuyển hợp lệ (ví dụ đơn giản)
-  function shuffleByMoves(size, moves=200) {
+  function shuffleByMoves(size, moves=300) {
     const board = makeSolved(size);
     let blank = board.length -1;
     const dirs = [
@@ -192,3 +197,23 @@ function checkWin(table, size) {
 // function moveTile(){
 
 // }
+
+
+  function choosingPic(pic) {
+    // Nếu click lại chính phần tử đang được chọn, thì dừng luôn
+    if (pic.classList.contains('choosing-pic')) return;
+    // 1) Xóa choosing-pic khỏi tất cả thẻ div có class gallery-pic
+    document.querySelectorAll('div.gallery-pic')
+      .forEach(t => t.classList.remove('choosing-pic'));
+    // 2) Thêm choosing-pic vào el
+    pic.classList.add('choosing-pic');
+    // 3) Lấy src của <img> con và cập nhật biến pickingPicture
+    const img = pic.querySelector('img');
+    if (img) {
+      pickingPicture = img.src;
+      console.log('Đã chọn ảnh:', pickingPicture);
+    }
+    // 4) Tạo lại board game với img mới
+    buildGrid(size);
+    shuffleByMoves(size);
+  }
