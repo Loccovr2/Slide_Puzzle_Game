@@ -1,22 +1,32 @@
 
-const boardGame=document.querySelector('.board-game')
+const boardGame=document.querySelector('.board-game');
 let size;
+let pickingPicture = `./assets/sample_pic.jpg`;
+// const button = document.getElementById("testbtn");
+// var  playingTable;
 
-const button = document.getElementById("testbtn");
-var  playingTable;
+// button.addEventListener("click", myFunction);
+// function myFunction() {
+//   let x = playingTable.indexOf((size*size)-1);
+//   document.getElementById("test").innerHTML = playingTable;
+// }
 
-button.addEventListener("click", myFunction);
-function myFunction() {
-  let x = playingTable.indexOf((size*size)-1);
-  document.getElementById("test").innerHTML = playingTable;
-}
+    function toggleTileNumber() {
+      // Lấy NodeList các phần tử .tile-number
+      const elements = document.querySelectorAll('.tile-number');
+      elements.forEach(el => {
+        // Nếu style.visibility chưa được gán, sẽ trả về ''
+        const current = el.style.visibility || 'visible';
+        el.style.visibility = (current === 'hidden') ? 'visible' : 'hidden';
+      });
+    }
 
 const btn= document.getElementById('merge');
   btn.addEventListener('click', () => {
     const boardArr = shuffleByMoves(size, 400);
     playingTable=boardArr;
-    alert(playingTable);
-    alert(playingTable.indexOf(8))
+    // alert(playingTable);
+    // alert(playingTable.indexOf(8))
     renderAreas(boardArr, size);
   });
 
@@ -42,7 +52,7 @@ function buildGrid(p1){
         tile.appendChild(label);
         // Tạo thẻ img và gán src, alt
         const img = document.createElement('img');
-        img.src = `sample_pic.jpg`;    
+        img.src = pickingPicture;    
         // Bỏ img vào div.tile
         tile.appendChild(img);
         // Bỏ div.tile vào board-game
@@ -161,6 +171,23 @@ function moveTile(tileValue) {
 
   // 4) Render lại layout
   renderAreas(playingTable, size);
+  // alert(playingTable);
+
+  if (checkWin(playingTable, size)) {
+      setTimeout(() => {
+        alert('Chúc mừng bạn đã hoàn thành!');
+        // Bạn có thể thêm logic reset hoặc hiển thị kết quả ở đây
+      }, 100);
+    }
+}
+
+function checkWin(table, size) {
+  // 1) Chuẩn bị mảng mục tiêu: [1,2,…,size*size]
+  const target = Array.from({ length: size*size }, (_, i) => i);
+// alert(target);
+  // 2) So sánh hai mảng
+  return table.length === target.length
+      && table.every((v, i) => v === target[i]);
 }
 // function moveTile(){
 

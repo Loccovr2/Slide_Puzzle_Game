@@ -8,6 +8,8 @@
 
 body{
     background-color: rgb(21, 3, 38);
+    overflow:scroll ;
+    display: relative;
 }
 
 .tile{
@@ -33,6 +35,7 @@ body{
   border-image: radial-gradient(circle,rgb(97, 63, 251) 50%, rgb(252, 70, 70) 100%) 1;
   box-shadow:0 0 100px #FF0000;
   z-index: 3;
+  
 
 }
 
@@ -68,20 +71,22 @@ span.tile-number {
 body {
     width: 100vw;
     height: 100vh;
-    margin: 0;
-
+    margin: auto;
+    /* text-align: ; */
+    overflow: hidden;
 }
 button{
     height: 60px;
     width: 120px;
-
 }
 
 .board-game{
-    position: relative;
+    position: absolute;
     height: 80vh;
     width: 80vh;
-    margin: auto;   
+    left: 30%;
+    top: 15vh;
+    /* margin: auto;    */
     display: grid;
     /* box-shadow: 0 0 200px #0606a8, 0 0 500px #11036c; */
     /* background-image: conic-gradient(red,blue,green,yellow,red); */
@@ -94,6 +99,9 @@ button{
         'tile1 tile2 tile3'
         'tile4 tile5 tile6'
         'tile7 tile8 tile9'; */
+}
+span{
+    visibility: visible;
 }
 @property --angle{
     syntax: "<angle>";
@@ -131,5 +139,92 @@ button{
 }
 
 
+/* Level Drop Down */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(51, 1, 91);
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: rgb(148, 221, 237);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: sans-serif;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/* Gallery */
+.gallery{
+    width: 160px;
+    height: calc(100% - 80px);
+    background-color: #07097c;
+    position: absolute;
+    top: 120px;
+    border-top-right-radius: 50px;
+    transition: width 0.5s;
+}
+.gallery-name{
+    font-size: 2rem;
+    background-color: #880404;
+    border-top-right-radius: 50px;
+}
+
+.gallery:hover{
+    width: 400px;    
+}
+.index-picture{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    row-gap: 10px;
+    /* grid-auto-flow: column; */
+    grid-template-columns: 1fr;
+    background-color: green;
+
+}
+.index-picture:hover{
+    grid-template-columns: repeat(2, 1fr);
+    overflow: scroll;
+    height: inherit;
+    overflow-x: hidden;
+
+}
+
+.index-picture img{   
+    /* box-sizing: none; */
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid black;
+}
