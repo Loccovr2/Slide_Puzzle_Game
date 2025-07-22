@@ -21,6 +21,8 @@ body{
     background-color: rgb(21, 3, 38);
     overflow:scroll ;
     display: relative;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ,sans-serif;
+
 }
 
 .tile{
@@ -180,7 +182,6 @@ span{
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  font-family: sans-serif;
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
@@ -199,25 +200,24 @@ span{
     height: calc(100% - 77px);
     background-color: #07097c;
     position: absolute;
-    top: 120px;
+    top: 110px;
     border-top-right-radius: 50px;
     transition: width 0.5s;
 }
 .gallery-name{
+    width: 180px;
     font-size: 2rem;
     background-color: #c50202;
     border-top-right-radius: 50px;
     text-align: center;
     color: yellow;
     box-shadow: 0 0 40px #95a000, 0 0 100px #00178a;
+    transition: width 0.5s;
 }
 
-.gallery:hover{
-    width: 400px;    
-}
 .index-picture{
     width: 100%;
-    height: calc(100%+10px);
+    height: calc(100%);
     display: grid;
     row-gap: 10px;
     /* grid-auto-flow: column; */
@@ -226,15 +226,18 @@ span{
     justify-items: center;
     align-items: center;     
     box-shadow: 0 0 40px #407f00, 0 0 100px #0e0064;
-
-
+    transition: width 0.5s;
 }
-.index-picture:hover{
+
+.gallery:hover .gallery-name{
+    width: 400px;
+}
+.gallery:hover .index-picture{
+    width: 400px;   
     grid-template-columns: repeat(2, 1fr);
     overflow: scroll;
     height: inherit;
     overflow-x: hidden;
-
 }
 
 .index-picture img{   
