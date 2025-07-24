@@ -25,13 +25,22 @@ var playingTable;
 
 const btn= document.getElementById('merge');
 
-    function startGame(){
-    const boardArr = shuffleByMoves(size, 400);
-    playingTable=boardArr;
-    // alert(playingTable);
-    // alert(playingTable.indexOf(8))
-    renderAreas(boardArr, size);
-    }
+function startGame(){
+  // 1) Shuffle và render grid
+  buildGrid(size);
+  const boardArr = shuffleByMoves(size, 500);
+  playingTable = boardArr;
+  renderAreas(boardArr, size);
+
+  // 2) Bỏ lớp 'stop-move' khỏi mọi tile
+  document.querySelectorAll('.tile').forEach(tile => {
+    tile.classList.remove('stop-move');
+  });
+  // 
+
+}
+
+
   btn.addEventListener('click', () => {
     const boardArr = shuffleByMoves(size, 400);
     playingTable=boardArr;
@@ -43,6 +52,7 @@ const btn= document.getElementById('merge');
 function buildGrid(p1){
       size=p1;
       boardGame.innerHTML = '';
+      resetStep();
       // boardGame.style.gridTemplateRows = `repeat(${p1}, 1fr)`;
       // boardGame.style.gridTemplateColumns = `repeat(${p1}, 1fr)`;
       // boardGame.style.gridTemplateAreas = ''; 
@@ -51,7 +61,7 @@ function buildGrid(p1){
        // Tạo n div.tile với id tile1,tile2,...tilen
       for (let i = 1; i <= p1*p1; i++) {
         const tile = document.createElement('div');
-        tile.className = 'tile'+ (i===size*size ? ' blank' : '');
+        tile.className = 'tile'+ ' stop-move'+(i===size*size ? ' blank' : '');
         tile.id = `tile${i}`;   
         tile.onclick = () => moveTile(i-1);
         tile.style.gridArea = `tile${i}`;
@@ -91,9 +101,9 @@ function setPositon(p1){
         const img = document.querySelector(`#tile${idx} img`);
         img.style.left     = `${-j * 100}%`;
         img.style.top      = `${-i * 100}%`;
-        if(idx==(p1*p1)){
-            img.style.visibility ='hidden';
-        }
+        // if(idx==(p1*p1)){
+        //     img.style.visibility ='hidden';
+        // }
     }
 }
 }
@@ -114,6 +124,7 @@ function setPositon(p1){
   // Shuffle bằng các bước di chuyển hợp lệ (ví dụ đơn giản)
   function shuffleByMoves(size, moves=300) {
     const board = makeSolved(size);
+    resetStep();
     let blank = board.length -1;
     const dirs = [
         { dr: -1, dc: 0 }, // lên
@@ -121,6 +132,7 @@ function setPositon(p1){
         { dr: 0,  dc: -1}, // trái
         { dr: 0,  dc: 1 }  // phải
       ];
+    
     for (let k=0;k<moves;k++) {
       const [r,c] = toRC(blank);
     // Thu thập các láng giềng
@@ -178,8 +190,6 @@ function moveTile(tileValue) {
     // alert("ko kề nhau");
     return;  // không di chuyển
   }
-
-
   
   // 3) Hoán đổi trong mảng
   [ playingTable[idxClick], playingTable[idxBlank] ] =
@@ -188,12 +198,24 @@ function moveTile(tileValue) {
   // 4) Render lại layout
   renderAreas(playingTable, size);
   // alert(playingTable);
+  countStep();
+
 
   if (checkWin(playingTable, size)) {
       setTimeout(() => {
         alert('Chúc mừng bạn đã hoàn thành!');
         // Bạn có thể thêm logic reset hoặc hiển thị kết quả ở đây
+        document.querySelectorAll('.tile').forEach(tile => {
+        tile.classList.add('stop-move');
+        tile.style.border = 'none';
+        // tile.classList.remove('blank');
+        });
+        let blank = document.querySelector('.tile.blank');
+        blank.classList.remove('blank');
       }, 100);
+      // Cập nhật thành tích
+      // Không cho thao tác với tile nữa
+
     }
 }
 
@@ -218,7 +240,7 @@ function checkWin(table, size) {
       .forEach(t => t.classList.remove('choosing-pic'));
     // tắt thông báo "choose picture in gallery"
     document.querySelector('div.choose-pic-notify').style.display='none';
-    // 2) Thêm choosing-pic vào el
+    // 2) Thêm choosing-pic vào pic
     pic.classList.add('choosing-pic');
     // 3) Lấy src của <img> con và cập nhật biến pickingPicture
     const img = pic.querySelector('img');
@@ -230,3 +252,18 @@ function checkWin(table, size) {
     buildGrid(size);
     // shuffleByMoves(size);
   }
+
+
+  // Hàm đếm lần di chuyển 
+    function countStep() {
+      // Tăng biến đếm
+      stepCount++;
+      // Cập nhật nội dung div
+      const el = document.querySelector('.steps');
+      el.textContent = `Steps: ${stepCount}`;
+    }
+    function resetStep(){
+    stepCount = 0;
+    const el = document.querySelector('.steps');
+    el.textContent = `Steps: ${stepCount}`;
+    }
