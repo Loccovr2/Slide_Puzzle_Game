@@ -1,9 +1,9 @@
 
 const boardGame=document.querySelector('.board-game');
-let size;
+let size = 3;
 let pickingPicture = `./assets/parrot.webp`;
 // const button = document.getElementById("testbtn");
-// var  playingTable;
+var playingTable;
 
 // button.addEventListener("click", myFunction);
 // function myFunction() {
@@ -21,7 +21,17 @@ let pickingPicture = `./assets/parrot.webp`;
       });
     }
 
+
+
 const btn= document.getElementById('merge');
+
+    function startGame(){
+    const boardArr = shuffleByMoves(size, 400);
+    playingTable=boardArr;
+    // alert(playingTable);
+    // alert(playingTable.indexOf(8))
+    renderAreas(boardArr, size);
+    }
   btn.addEventListener('click', () => {
     const boardArr = shuffleByMoves(size, 400);
     playingTable=boardArr;
@@ -67,11 +77,12 @@ function buildGrid(p1){
       // boardGame.style.gridTemplateRows = `repeat(${p1}, 1fr)`;
       // boardGame.style.gridTemplateColumns = `repeat(${p1}, 1fr)`;
       setPositon(p1);
-      const boardArr = shuffleByMoves(size, 400);
-      playingTable=boardArr;
+      // const boardArr = shuffleByMoves(size, 400);
+      // playingTable=boardArr;
+      playingTable=makeSolved(p1);
       // alert(playingTable);
       // alert(playingTable.indexOf(8))
-      renderAreas(boardArr, size);
+      renderAreas(playingTable, size);
     };
 function setPositon(p1){
     for(let i=0; i< p1 ; i++){
@@ -205,6 +216,8 @@ function checkWin(table, size) {
     // 1) Xóa choosing-pic khỏi tất cả thẻ div có class gallery-pic
     document.querySelectorAll('div.gallery-pic')
       .forEach(t => t.classList.remove('choosing-pic'));
+    // tắt thông báo "choose picture in gallery"
+    document.querySelector('div.choose-pic-notify').style.display='none';
     // 2) Thêm choosing-pic vào el
     pic.classList.add('choosing-pic');
     // 3) Lấy src của <img> con và cập nhật biến pickingPicture
@@ -215,5 +228,5 @@ function checkWin(table, size) {
     }
     // 4) Tạo lại board game với img mới
     buildGrid(size);
-    shuffleByMoves(size);
+    // shuffleByMoves(size);
   }

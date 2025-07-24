@@ -27,9 +27,9 @@
     <button onclick="toggleTileNumber()"> Show Tile's Number </button>
 
 
-
-    <div class="board-game" id="board">
-        <div class="tile" id="tile1"><span class="tile-number">1</span><img src="sample_pic.jpg"></div>
+    <div class="choose-pic-notify"><p>Choose pictue in gallery</p></div>
+    <div class="board-game notify" id="board">
+        <!-- <div class="tile" id="tile1"><span class="tile-number">1</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile2"><span class="tile-number">2</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile3"><span class="tile-number">3</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile4"><span class="tile-number">4</span><img src="sample_pic.jpg"></div>
@@ -37,8 +37,25 @@
         <div class="tile" id="tile6"><span class="tile-number">6</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile7"><span class="tile-number">7</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile8"><span class="tile-number">8</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div>
+        <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div> -->
     </div>
+
+    <div class="game-option">
+        <button class="start btn" onclick="startGame()" >start</button>
+        <button class="restart btn" onclick="" >restart</button >
+        <button class="pause btn" onclick="" >pause</button>
+        <div class="time">Time: </div>
+        <div class="steps">Steps: </div>
+    </div>
+    <div class="rencently-play">
+        <div class="level-collunm"></div>
+        <div class="time-column"></div>
+        <div class="moves-column"></div>
+    </div>
+    
+    <button class="setting">ICON</button>
+
+
 
     <div class="gallery">
         <div class="gallery-name">Gallery</div>
@@ -50,8 +67,8 @@
             <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="/Assets/original (2).webp" alt="5"></div>
             <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original (3).webp" alt="6"></div>
             <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original (4).webp" alt="7"></div>
-           <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original.webp" alt="8"></div>
-           <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/sample_pic.jpg" alt="9"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original.webp" alt="8"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/sample_pic.jpg" alt="9"></div>
 
         </div>
         
