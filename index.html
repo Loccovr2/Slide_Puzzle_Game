@@ -8,27 +8,15 @@
 </head>
 <body>
 
-    <div class="dropdown">
-    <button class="dropbtn">Levels</button>
-    <div class="dropdown-content">
-    <a href="#" onclick="buildGrid(3)">3x3</a>
-    <a href="#" onclick="buildGrid(4)">4x4</a>
-    <a href="#" onclick="buildGrid(5)">5x5</a>
-    <a href="#" onclick="buildGrid(6)">6x6</a>
-    <a href="#" onclick="buildGrid(7)">7x7</a>
-    <a href="#" onclick="buildGrid(8)">8x8</a>
-    <a href="#" onclick="buildGrid(9)">9x9</a>
-    <a href="#" onclick="buildGrid(10)">10x10</a>
-    </div>
-    </div>
 
-  
+    <div class="logo"></div>
+    <div class="head-page"></div>
+    <div class="right-head-page"></div>
     <!-- <button id="3x3" onclick="buildGrid(3)">3x3</button>
     <button id="4x4" onclick="buildGrid(4)">4x4</button>
     <button id="5x5" onclick="buildGrid(5)">5x5</button> -->
 
-    <button id="merge"> Merge </button>
-    <button onclick="toggleTileNumber()"> Show Tile's Number </button>
+
 
 
     <div class="choose-pic-notify"><p>Choose pictue in gallery</p></div>
@@ -43,14 +31,32 @@
         <div class="tile" id="tile8"><span class="tile-number">8</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div> -->
     </div>
+    <div class="preview"></div>
 
     <div class="game-option">
         <button class="start btn" onclick="startGame()" >start</button>
-        <button class="restart btn" onclick="resetTimer(); startGame();" >restart</button >
-        <button class="pause btn" onclick="stopTimer()" >pause</button>
+        <button class="restart btn" onclick="confirmOngoingGame()" >restart</button >
+        <button class="pause btn" onclick="toggleTimer()" >pause</button>
         <div class="timer">Time: <span id="timer">00:00:00</span></div>
         <div class="steps">Steps: 0 </div>
+        <button id="merge"> Merge </button>
+        <button onclick="toggleTileNumber()"> Show Tile's Number </button>
+        <div class="dropdown">
+        <button class="dropbtn">Levels</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="buildGrid(3)">3x3</a>
+                <a href="#" onclick="buildGrid(4)">4x4</a>
+                <a href="#" onclick="buildGrid(5)">5x5</a>
+                <a href="#" onclick="buildGrid(6)">6x6</a>
+                <a href="#" onclick="buildGrid(7)">7x7</a>
+                <a href="#" onclick="buildGrid(8)">8x8</a>
+                <a href="#" onclick="buildGrid(9)">9x9</a>
+                <a href="#" onclick="buildGrid(10)">10x10</a>
+            </div>
+        </div>
     </div>
+
+
     <div class="rencently-play">
         <div class="level-collunm"></div>
         <div class="time-column"></div>

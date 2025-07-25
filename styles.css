@@ -154,7 +154,7 @@ span{
     width: calc(100% + 14px);
     top: -7px;
     left: -7px;
-    background-image: conic-gradient(from var(--angle),#880404 0%,rgb(0, 144, 0) 40%,rgb(203, 230, 82) 60%,rgb(255, 98, 124) 90%,red 100%);
+    background-image: conic-gradient(from var(--angle),red 0%,rgb(0, 144, 0) 40%,rgb(203, 230, 82) 60%,rgb(255, 98, 124) 90%,red 100%);
     animation: 3s spin linear infinite;
     filter: blur(2px);
     box-shadow: 0 0 10px #9494ec, 0 0 500px #2b1b94;
@@ -196,6 +196,8 @@ span{
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 15;
+  top: -500px;
+  /* right: -350px; */
 }
 
 .dropdown-content a {
@@ -310,7 +312,7 @@ span{
     position: absolute;
     background-color: #014805;
     color:yellow;
-    right: 50px;
+    right: 1vw;
     bottom: 5vh;
     border-radius: 40px;
 }
@@ -324,22 +326,6 @@ span{
     color: yellow;
 }
 
-
-
-/* Setting */
-.setting{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    background-color: #00ff0e;
-    color: yellow;
-    right: 10px;
-    top: 10px;
-}
-
-
-
-
 /* .start{
     position: relative;
 }
@@ -351,4 +337,56 @@ span{
     height: 100%;
     width: 100%;
 } */
+
+
+/* Setting */
+.setting{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: #00ff0e;
+    color: yellow;
+    right: 10px;
+    top: 10px;
+    z-index: 3;
+}
+
+/* Logo */
+.logo{
+    position: absolute;
+    background-color: #00ff0e;
+    width: 400px;
+    height: 90px;
+    border-bottom-right-radius: 100px;
+    z-index: 2;
+}
+
+.head-page{
+    position: absolute;
+    background-color: #01405b;
+    width: 100vw;
+    height: 50px;
+    z-index: 1;
+}
+
+.right-head-page{
+    position: absolute;
+    background-color: #60053c;
+    width: 100px;
+    height: 90px;
+    border-bottom-left-radius: 100px;
+    z-index: 2; 
+    right: 0;
+}
+
+/* Preview */
+.preview{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    right: 27%;
+    top: 10vh;
+    background-color: red;
+
+}
 

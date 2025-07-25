@@ -26,11 +26,21 @@ var playingTable;
 const btn= document.getElementById('merge');
 
 function startGame(){
+  const btn = document.querySelector('.start.btn');
+  // Nếu timerInterval đang chạy (game vẫn diễn ra)
+  if (totalSeconds) {
+    const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
+    if (!ok) return;               // Nếu Cancel thì dừng
+    // Nếu OK, tạm thời vô hiệu nút để tránh click liên tục
+    btn.style.pointerEvents = 'none';
+  }
   // 1) Shuffle và render grid
   buildGrid(size);
   const boardArr = shuffleByMoves(size, 500);
   playingTable = boardArr;
   renderAreas(boardArr, size);
+
+  btn.style.removeProperty('pointer-events');
 
   // 2) Bỏ lớp 'stop-move' khỏi mọi tile
   document.querySelectorAll('.tile').forEach(tile => {
@@ -94,6 +104,7 @@ function buildGrid(p1){
       // alert(playingTable);
       // alert(playingTable.indexOf(8))
       renderAreas(playingTable, size);
+      resetTimer();
     };
 function setPositon(p1){
     for(let i=0; i< p1 ; i++){
@@ -240,6 +251,10 @@ function checkWin(table, size) {
 
 
   function choosingPic(pic) {
+    if (totalSeconds) {
+      const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
+      if (!ok) return;               // Nếu Cancel thì dừng
+    }
     // Nếu click lại chính phần tử đang được chọn, thì dừng luôn
     if (pic.classList.contains('choosing-pic')) return;
     // 1) Xóa choosing-pic khỏi tất cả thẻ div có class gallery-pic
@@ -258,7 +273,8 @@ function checkWin(table, size) {
     // 4) Tạo lại board game với img mới
     buildGrid(size);
     resetTimer();
-    // shuffleByMoves(size);
+
+      // shuffleByMoves(size);
   }
 
 
@@ -314,7 +330,38 @@ function checkWin(table, size) {
       totalSeconds = 0;
       updateDisplay();
     }
+    function toggleTimer() {
+      if (timerInterval) {
+        // Đang chạy -> tạm dừng
+        stopTimer();
+      } else {
+        // Đang dừng -> tiếp tục
+        startTimer();
+      }
+    }
+      
+    function confirmOngoingGame() {
+      // Thông báo kèm hai lựa chọn OK/Cancel
+      const proceed = window.confirm('Trò chơi vẫn đang diễn ra, bạn chắc chắn muốn tiếp tục?');
+      if (proceed) {
+        // Người dùng chọn OK → làm tiếp hành động (ví dụ restart)
+        startGame();
+        resetTimer()
+      } else {
+        // Người dùng chọn Cancel → hủy hành động
+        // Có thể log hoặc không làm gì thêm
+        console.log('Người dùng đã hủy thao tác.');
+      }
+    }
 
+
+
+
+
+    
+
+
+    
 
 
 
