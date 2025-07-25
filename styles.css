@@ -69,15 +69,14 @@ body{
     width: 300px ;  
     height: 300px;
     /* background-image: conic-gradient(red,blue,green,yellow,red); */
-    /* z-index: 3; */
-    overflow: visible;
-    z-index: 3;
-} 
+    /* z-index: 3;
+    }    
 */
 
 
+
 span.tile-number {
-    z-index: 2;
+    z-index: 4;
     color: red;
     font-size: 2rem;
     position: absolute;
@@ -134,7 +133,7 @@ span{
 .choose-pic-notify{
    position: absolute;
    color: yellow;
-   z-index: 2;
+   z-index: 3;
    font-size: 3rem;
    align-content: center;
    justify-items: center;

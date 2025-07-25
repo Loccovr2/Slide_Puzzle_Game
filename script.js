@@ -53,6 +53,7 @@ function buildGrid(p1){
       size=p1;
       boardGame.innerHTML = '';
       resetStep();
+
       // boardGame.style.gridTemplateRows = `repeat(${p1}, 1fr)`;
       // boardGame.style.gridTemplateColumns = `repeat(${p1}, 1fr)`;
       // boardGame.style.gridTemplateAreas = ''; 
@@ -199,7 +200,7 @@ function moveTile(tileValue) {
   renderAreas(playingTable, size);
   // alert(playingTable);
   countStep();
-
+  startTimer();
 
   if (checkWin(playingTable, size)) {
       setTimeout(() => {
@@ -210,8 +211,14 @@ function moveTile(tileValue) {
         tile.style.border = 'none';
         // tile.classList.remove('blank');
         });
+        document.querySelectorAll('.tile-number').forEach(tileNum => {
+        tileNum.style.visibility = 'hidden';
+        // tile.classList.remove('blank');
+        });
         let blank = document.querySelector('.tile.blank');
         blank.classList.remove('blank');
+
+        stopTimer();
       }, 100);
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
@@ -250,6 +257,7 @@ function checkWin(table, size) {
     }
     // 4) Tạo lại board game với img mới
     buildGrid(size);
+    resetTimer();
     // shuffleByMoves(size);
   }
 
@@ -267,3 +275,61 @@ function checkWin(table, size) {
     const el = document.querySelector('.steps');
     el.textContent = `Steps: ${stepCount}`;
     }
+
+
+    // Các hàm đếm giờ
+    let timerInterval = null;
+    let totalSeconds = 0;
+    // Định dạng số thành hai chữ số, ví dụ 4 -> "04"
+    function pad(value) {
+      return value.toString().padStart(2, '0');
+    }
+      // Cập nhật hiển thị
+    function updateDisplay() {
+      const minutes   = Math.floor(totalSeconds / 3600);
+      const seconds = Math.floor((totalSeconds % 3600) / 60);
+      const miliseconds = totalSeconds % 60;
+      const str = `${pad(minutes)}:${pad(seconds)}:${pad(miliseconds)}`;
+      document.getElementById('timer').textContent = str;
+    }
+
+    // Bắt đầu đếm
+    function startTimer() {
+      if (timerInterval !== null) return; // nếu đang chạy thì thôi
+      timerInterval = setInterval(() => {
+        totalSeconds++;
+        updateDisplay();
+      }, 10);
+    }
+
+    // Dừng đếm
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    // Đặt lại về 00:00:00
+    function resetTimer() {
+      stopTimer();
+      totalSeconds = 0;
+      updateDisplay();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
