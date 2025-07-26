@@ -1,7 +1,7 @@
 
 const boardGame=document.querySelector('.board-game');
 let size = 3;
-let pickingPicture = `./assets/parrot.webp`;
+let pickingPicture = `./assets/image/parrot.webp`;
 // const button = document.getElementById("testbtn");
 var playingTable;
 let gameInProgress=false;
@@ -282,6 +282,9 @@ function checkWin(table, size) {
       pickingPicture = img.src;
       console.log('Đã chọn ảnh:', pickingPicture);
     }
+    // cập nhật ảnh trong preview
+    const previewPic = document.querySelector('.dropdown-picture img');
+    previewPic.src=pickingPicture;
     // 4) Tạo lại board game với img mới
     buildGrid(size);
     resetTimer();
@@ -372,9 +375,38 @@ function checkWin(table, size) {
       }
     }
 
+    // Preview Picture
+    function showPreview() {
+      const pic = document.querySelector('.dropdown-picture img');
+      pic.src=pickingPicture;
+      // Toggle its visibility
+      if (pic.style.display === 'block') {
+        pic.style.display = 'none';
+      } else {
+        pic.style.display = 'block';
+      }
+    }
 
 
 
+    // Setting //
+    const settings = document.querySelector('.settings');
+    const settingBtn      = settings.querySelector('.settings-button');
+
+    // Toggle open/close khi click nút
+    settingBtn.addEventListener('click', e => {
+      e.stopPropagation();             // ngăn sự kiện nổi bọt
+      settings.classList.toggle('open');
+    });
+
+    // Click ra ngoài sẽ đóng dropdown
+    document.addEventListener('click', () => {
+      settings.classList.remove('open');
+    });
+
+    // Ngăn đóng khi click vào menu
+    settings.querySelector('.settings-dropdown')
+            .addEventListener('click', e => e.stopPropagation());
 
     
 

@@ -31,7 +31,15 @@
         <div class="tile" id="tile8"><span class="tile-number">8</span><img src="sample_pic.jpg"></div>
         <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div> -->
     </div>
-    <div class="preview"></div>
+    <div class="dropdown-icon" onclick="showPreview()">
+        <div class="preview-icon">
+            <img src="/Assets/icon/image-search.png" alt="preview">
+        </div>
+        <div class="dropdown-picture">
+            <img src="Assets/image/parrot.webp" alt="preview-pic">
+        </div>
+    </div>
+
 
     <div class="game-option">
         <button class="start btn" onclick="startGame()" >start</button>
@@ -57,34 +65,40 @@
     </div>
 
 
-    <div class="rencently-play">
+    <!-- <div class="rencently-play">
         <div class="level-collunm"></div>
         <div class="time-column"></div>
         <div class="moves-column"></div>
     </div>
-    
-    <button class="setting">ICON</button>
-
+     -->
+    <div class="settings">
+        <button class="settings-button" aria-label="Settings">⚙️</button>
+            <ul class="settings-dropdown">
+                <li onclick="alert('Profile')">Profile</li>
+                <li onclick="alert('Settings')">Settings</li>
+                <li onclick="alert('Logout')">Logout</li>
+            </ul>
+    </div>
 
 
     <div class="gallery">
         <div class="gallery-name">Gallery</div>
         <div class="index-picture">
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./assets/parrot.webp" alt="1"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)" ><img class="tile" src="./Assets/A2_33_c020ee18-0c82-4dc1-b16d-c90a64707b20.webp" alt="2"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/arctic-wolf1.png" alt="3"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original (1).webp" alt="4"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="/Assets/original (2).webp" alt="5"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original (3).webp" alt="6"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original (4).webp" alt="7"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/original.webp" alt="8"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/sample_pic.jpg" alt="9"></div>
-
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./assets/image/parrot.webp" alt="1"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)" ><img class="tile" src="./Assets/image/A2_33_c020ee18-0c82-4dc1-b16d-c90a64707b20.webp" alt="2"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/arctic-wolf1.png" alt="3"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (1).webp" alt="4"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="/Assets/image/original (2).webp" alt="5"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (3).webp" alt="6"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (4).webp" alt="7"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original.webp" alt="8"></div>
+            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/sample_pic.jpg" alt="9"></div>
+            <!-- <div class="" onclick="choosingPic(this)"><img class=" tile" src="./Assets/icon/add-add-plus-sign.jpg" alt="9">Add more image</div>   -->
         </div>
         
     </div>
     <!-- <button id="testbtn">test</button> -->
-    
+    <!-- <img class="test" src="./Assets/image/original (1).webp" alt=""> -->
     <script src="script.js"></script>
 </body>
 </html>
