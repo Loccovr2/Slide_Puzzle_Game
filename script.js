@@ -4,6 +4,7 @@ let size = 3;
 let pickingPicture = `./assets/parrot.webp`;
 // const button = document.getElementById("testbtn");
 var playingTable;
+let gameInProgress=false;
 
 // button.addEventListener("click", myFunction);
 // function myFunction() {
@@ -26,21 +27,21 @@ var playingTable;
 const btn= document.getElementById('merge');
 
 function startGame(){
-  const btn = document.querySelector('.start.btn');
+  // const btn = document.querySelector('.start.btn');
   // Nếu timerInterval đang chạy (game vẫn diễn ra)
-  if (totalSeconds) {
-    const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
-    if (!ok) return;               // Nếu Cancel thì dừng
-    // Nếu OK, tạm thời vô hiệu nút để tránh click liên tục
-    btn.style.pointerEvents = 'none';
-  }
+  // if (totalSeconds) {
+  //   const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
+  //   if (!ok) return;               // Nếu Cancel thì dừng
+  //   // Nếu OK, tạm thời vô hiệu nút để tránh click liên tục
+  //   btn.style.pointerEvents = 'none';
+  // }
   // 1) Shuffle và render grid
   buildGrid(size);
   const boardArr = shuffleByMoves(size, 500);
   playingTable = boardArr;
   renderAreas(boardArr, size);
 
-  btn.style.removeProperty('pointer-events');
+  // btn.style.removeProperty('pointer-events');
 
   // 2) Bỏ lớp 'stop-move' khỏi mọi tile
   document.querySelectorAll('.tile').forEach(tile => {
@@ -194,6 +195,7 @@ function isAdjacent(idx1, idx2) {
 }
 
 function moveTile(tileValue) {
+  gameInProgress=true;
   // 1) Tìm index clicked và blank trong mảng
   const idxClick = playingTable.indexOf(tileValue);
   const idxBlank = playingTable.indexOf((size * size)-1);
@@ -212,6 +214,12 @@ function moveTile(tileValue) {
   // alert(playingTable);
   countStep();
   startTimer();
+  const btn = document.querySelector('.start.btn');
+  btn.style.pointerEvents = 'none';
+
+  const restartbtn = document.querySelector('.restart');
+  restartbtn.onclick = () => confirmOngoingGame();
+  restartbtn.style.removeProperty('pointer-events');
 
   if (checkWin(playingTable, size)) {
       setTimeout(() => {
@@ -229,6 +237,11 @@ function moveTile(tileValue) {
         let blank = document.querySelector('.tile.blank');
         blank.classList.remove('blank');
 
+        btn.style.removeProperty('pointer-events');
+        restartbtn.onclick = null;
+        restartbtn.style.pointerEvents='none';
+        gameInProgress=false;
+        
         stopTimer();
       }, 100);
       // Cập nhật thành tích
@@ -249,9 +262,8 @@ function checkWin(table, size) {
 
 // }
 
-
   function choosingPic(pic) {
-    if (totalSeconds) {
+    if (gameInProgress) {
       const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
       if (!ok) return;               // Nếu Cancel thì dừng
     }
@@ -342,11 +354,17 @@ function checkWin(table, size) {
       
     function confirmOngoingGame() {
       // Thông báo kèm hai lựa chọn OK/Cancel
+      if(!gameInProgress){
+        startGame();
+        resetTimer();
+        return;
+      } 
       const proceed = window.confirm('Trò chơi vẫn đang diễn ra, bạn chắc chắn muốn tiếp tục?');
       if (proceed) {
         // Người dùng chọn OK → làm tiếp hành động (ví dụ restart)
         startGame();
-        resetTimer()
+        resetTimer();
+        gameInProgress=false;
       } else {
         // Người dùng chọn Cancel → hủy hành động
         // Có thể log hoặc không làm gì thêm

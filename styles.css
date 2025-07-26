@@ -317,6 +317,11 @@ span{
     border-radius: 40px;
 }
 
+
+/* .restart{
+    pointer-events: none;
+} */
+
 .game-option > div{
     font-size: 2em;
 }
