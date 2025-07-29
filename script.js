@@ -23,6 +23,11 @@ let gameInProgress=false;
     }
 
 
+// Tắt click trong game option
+const optionClick = document.querySelector('.game-option');
+optionClick.style.pointerEvents='none';
+optionClick.style.filter='blur(10px)';
+
 
 const btn= document.getElementById('merge');
 
@@ -61,6 +66,15 @@ function startGame(){
   });
 
 function buildGrid(p1){
+      if (gameInProgress) {
+        const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
+        if (!ok) return;               // Nếu Cancel thì dừng
+        else {
+          gameInProgress = false;
+          const btn = document.querySelector('.start.btn');
+          btn.style.removeProperty('pointer-events');
+        }  
+      }
       size=p1;
       boardGame.innerHTML = '';
       resetStep();
@@ -207,7 +221,7 @@ function moveTile(tileValue) {
   
   // 3) Hoán đổi trong mảng
   [ playingTable[idxClick], playingTable[idxBlank] ] =
-    [ playingTable[idxBlank], playingTable[idxClick] ];
+  [ playingTable[idxBlank], playingTable[idxClick] ];
 
   // 4) Render lại layout
   renderAreas(playingTable, size);
@@ -216,10 +230,11 @@ function moveTile(tileValue) {
   startTimer();
   const btn = document.querySelector('.start.btn');
   btn.style.pointerEvents = 'none';
-
+  // 
   const restartbtn = document.querySelector('.restart');
   restartbtn.onclick = () => confirmOngoingGame();
   restartbtn.style.removeProperty('pointer-events');
+  //
 
   if (checkWin(playingTable, size)) {
       setTimeout(() => {
@@ -237,9 +252,9 @@ function moveTile(tileValue) {
         let blank = document.querySelector('.tile.blank');
         blank.classList.remove('blank');
 
+        previewBtn.style.pointerEvents = 'unset';
         btn.style.removeProperty('pointer-events');
         restartbtn.onclick = null;
-        restartbtn.style.pointerEvents='none';
         gameInProgress=false;
         
         stopTimer();
@@ -266,7 +281,13 @@ function checkWin(table, size) {
     if (gameInProgress) {
       const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
       if (!ok) return;               // Nếu Cancel thì dừng
+      else {
+        gameInProgress = false;
+        const btn = document.querySelector('.start.btn');
+        btn.style.removeProperty('pointer-events');
+      }  
     }
+    
     // Nếu click lại chính phần tử đang được chọn, thì dừng luôn
     if (pic.classList.contains('choosing-pic')) return;
     // 1) Xóa choosing-pic khỏi tất cả thẻ div có class gallery-pic
@@ -288,8 +309,12 @@ function checkWin(table, size) {
     // 4) Tạo lại board game với img mới
     buildGrid(size);
     resetTimer();
-
-      // shuffleByMoves(size);
+    // Mơ cho phép nhấn Preview ảnh
+    const previewBtn = document.querySelector('.dropdown-icon')
+    previewBtn.style.pointerEvents = 'unset';
+    // Mở click game-option
+    optionClick.style.pointerEvents='unset';
+    optionClick.style.removeProperty('filter');
   }
 
 
@@ -390,8 +415,8 @@ function checkWin(table, size) {
 
 
     // Setting //
-    const settings = document.querySelector('.settings');
-    const settingBtn      = settings.querySelector('.settings-button');
+    const settings   = document.querySelector('.settings');
+    const settingBtn = settings.querySelector('.settings-button');
 
     // Toggle open/close khi click nút
     settingBtn.addEventListener('click', e => {
@@ -407,6 +432,8 @@ function checkWin(table, size) {
     // Ngăn đóng khi click vào menu
     settings.querySelector('.settings-dropdown')
             .addEventListener('click', e => e.stopPropagation());
+
+
 
     
 

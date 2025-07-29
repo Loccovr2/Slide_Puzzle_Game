@@ -101,8 +101,9 @@ body {
 }
 button{
     height: 45px;
-    width: 90px;
+    width: auto;
     border-radius: 30px;
+
 }
 
 .board-game,.choose-pic-notify{
@@ -180,35 +181,107 @@ span{
 .dropbtn {
   background-color: #4CAF50;
   color: white;
-  font-size: 16px;
+  font-size: 1.5rem;
   border: none;
   cursor: pointer;
+  border-radius: 30px;
+  height: 100%;
+  width: 100px;
+  text-align: center;
+  align-content: center;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
+  align-content: center;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgb(51, 1, 91);
-  min-width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 15;
-  top: -500px;
+  min-width: 150px;
+  /* background-color: yellow; */
+  z-index: 1;
+  justify-items: center;
+  bottom: 40px;
+  left: -25px;
   /* right: -350px; */
 }
 
-.dropdown-content a {
-  color: rgb(148, 221, 237);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.dropdown-content::after{
+  width: 100%;
+  height: 100%;  
+  content: '';
+  background-color: rgb(159, 154, 255, 0.1);
+  position: absolute;
+  z-index: -1;
+  bottom: 0px;
+  filter: blur(10px);
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a {
+  color: white;
+  width: 100px;
+  padding: 6px 16px;
+  margin-top: 3px;
+  border: 3px solid #9494ec;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #00ec27 0%, #00ec27 50%, #6a3093   50%, #6a3093  100%);
+  background-size: 200% auto;
+  background-position: 100% 0%;
+  transition: 0.2s;
+
+}
+#lvl3 {
+  background-image: linear-gradient(to right,
+    #80FF00 0%, #80FF00 50%, #6a3093 50%, #6a3093 100%);
+}
+
+#lvl4 {
+  background-image: linear-gradient(to right,
+    #BFFF00 0%, #BFFF00 50%, #6a3093 50%, #6a3093 100%);
+}
+
+#lvl5 {
+  background-image: linear-gradient(to right,
+    #FFFF00 0%, #FFFF00 50%, #6a3093 50%, #6a3093 100%);
+}
+
+#lvl6 {
+  background-image: linear-gradient(to right,
+    #FFBF00 0%, #FFBF00 50%, #6a3093 50%, #6a3093 100%);
+}
+
+#lvl7 {
+  background-image: linear-gradient(to right,
+    #FF8000 0%, #FF8000 50%, #6a3093 50%, #6a3093 100%);
+}
+
+#lvl8 {
+  background-image: linear-gradient(to right,
+    #FF4000 0%, #FF4000 50%, #6a3093 50%, #6a3093 100%);
+}
+
+#lvl9 {
+  background-image: linear-gradient(to right,
+    #FF0000 0%, #FF0000 50%, #6a3093 50%, #6a3093 100%);
+}
+
+#lvl10 {
+  background-image: linear-gradient(to right,
+    #BF0000 0%, #BF0000 50%, #6a3093 50%, #6a3093 100%);
+}
+
+
+.dropdown-content a:hover {
+    color: #000000;
+    /* background-color: #f1f1f1; */
+    background-position: 0% 0%;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -222,7 +295,7 @@ span{
 .gallery{
     width: 180px;
     height: calc(100% - 77px);
-    background-color: #861600;
+    background-color: #FB8C00;
     position: absolute;
     top: 110px;
     border-top-right-radius: 50px;
@@ -235,7 +308,7 @@ span{
     background-color: #d63606;
     border-top-right-radius: 50px;
     text-align: center;
-    color: yellow;
+    color: #ffdf8f;
     box-shadow: 0 0 40px #95a000, 0 0 100px #00178a;
     transition: width 0.5s;
 }
@@ -310,7 +383,7 @@ span{
 /* Game option */
 .game-option{
     width: 400px;
-    height: 260px;
+    height: 200px;
     position: absolute;
     background-color: #0e173c;
     border: 3px solid rgb(171, 77, 234);
@@ -320,18 +393,93 @@ span{
     border-radius: 40px;
 }
 
-
-/* .restart{
-    pointer-events: none;
-} */
-
 .game-option > div{
-    font-size: 2em;
+    font-size: 1.5em;
 }
+.game-option{
+    padding: 8px 4px;
+    
+}
+
 .btn{
     display: inline-block;
-    background-color: #0099ff;
-    color: yellow;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #9575CD 0%, #a044ff  40%, #303F9F  100%);
+    background-size: 250% auto;
+    color: #fff;
+    width: 30%;
+    border-radius: 30px;
+    text-align: center;
+    transition: 0.5s;
+
+}
+.btn:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #FFD600;
+    text-decoration: none;
+}
+
+
+
+.game-option .controls {
+  display: flex;
+  gap: 10px;               /* Khoảng cách giữa các nút */
+  justify-content: center; /* Hoặc center nếu muốn chính giữa */
+  height: 20%;
+}
+.timer,.steps{
+    margin: 10px 15px;
+    width: 220px ;
+    height: 40px;
+    position: relative;
+    z-index: 3;
+}
+.timer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  background-color: #0e173c;
+
+}
+.clock-icon{
+  display: inline-block;      /* bắt chước text */
+  width: 1.4em;                 /* bằng 1 chữ cái của font hiện tại */
+  height: 1.4em;
+}
+.showTile{
+    width: 200px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #d63606;
+    border-radius: 30px;
+    text-align: center;
+    align-content: center;
+    color: #ffdf8f;
+}
+
+.timer::before{
+    position: absolute;
+    width: calc(100% + 8px);
+    height: calc(100% + 2px);
+    border-radius: 5px;
+    content: '';
+    opacity: 1;
+    z-index: -1;
+    top: -4px;
+    left: -4px;
+    background-image: conic-gradient(from var(--angle),
+    transparent 50%, #001aff 50%,#001aff 60%,red 60%, red 90%,#001aff 90%,#001aff 100%);    
+    animation: 1s spin ease infinite;
+    animation-play-state: running;
+}
+
+.controls3{
+    height: 23%;
+    display: flex;
+    margin: 10px;
+    gap: 40px;
 }
 
 /* .start{
@@ -370,7 +518,11 @@ span{
     }
 
     /* Nút kích hoạt dropdown */
+    .settings-button img{
+        z-index: 3;
+    }
     .settings-button {
+      color: yellow;
       width: 50px;
       height: 50px;
       font-size: 1.5rem;
@@ -418,6 +570,7 @@ span{
     background-color: #110c47;
     border: 3px solid rgb(148, 123, 255);
     border-left: none;
+    border-top: none;
     width: 400px;
     height: 90px;
     border-bottom-right-radius: 100px;
@@ -426,7 +579,7 @@ span{
 
 .head-page{
     position: absolute;
-    background-color: #01405b;
+    background-color: #4a2982;
     width: 100vw;
     height: 50px;
     z-index: 1;
@@ -445,6 +598,8 @@ span{
 /* Preview */
 .dropdown-icon{
     position: absolute;
+    cursor: pointer;
+    pointer-events: none;
     height: 50px;
     width: 50px;
     right: 27.5%;
@@ -465,16 +620,34 @@ span{
 }
 .dropdown-picture img{
     display: none;
+    transform-origin: top left;
+    position: absolute;
+    left: 57px;
+    top: 0px;
     height: 300px;
     width: 300px;
     border: 2px solid rgb(159, 154, 255);
     border-radius: 10px;
+    animation:  openPreview 0.1s ease forwards;
 }
+@keyframes openPreview{
+    0%{
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+
+    }
+
+}
+
 /* .dropdown-icon:active   img{
     display: block;
 } */
 
-.test{
+/* .test{
     position: absolute;
     top: 50%;
     right: 50px;
@@ -490,5 +663,5 @@ span{
     left: -100px;
     background-color: yellow;
     z-index: 40;
-}
+} */
 
