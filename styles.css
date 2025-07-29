@@ -428,7 +428,7 @@ span{
   height: 20%;
 }
 .timer,.steps{
-    margin: 10px 15px;
+    margin: 5px 15px;
     width: 220px ;
     height: 40px;
     position: relative;
@@ -470,9 +470,8 @@ span{
     top: -4px;
     left: -4px;
     background-image: conic-gradient(from var(--angle),
-    transparent 50%, #001aff 50%,#001aff 60%,red 60%, red 90%,#001aff 90%,#001aff 100%);    
-    animation: 1s spin ease infinite;
-    animation-play-state: running;
+    transparent 50%, #001aff,red);    
+    animation: 1s spin linear infinite;
 }
 
 .controls3{

@@ -234,7 +234,6 @@ function moveTile(tileValue) {
   const restartbtn = document.querySelector('.restart');
   restartbtn.onclick = () => confirmOngoingGame();
   restartbtn.style.removeProperty('pointer-events');
-  //
 
   if (checkWin(playingTable, size)) {
       setTimeout(() => {
@@ -433,8 +432,7 @@ function checkWin(table, size) {
     settings.querySelector('.settings-dropdown')
             .addEventListener('click', e => e.stopPropagation());
 
-
-
+            
     
 
 
