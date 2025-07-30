@@ -7,115 +7,118 @@
     <title>Slide Puzzle</title>
 </head>
 <body>
-
-    <div class="page-header">
-        <div class="logo"></div>
-        <div class="head-page"></div>
-        <div class="right-head-page">
-            <div class="settings">
-                <button class="settings-button" aria-label="Settings">☰</button>
-                    <ul class="settings-dropdown">
-                        <!-- <li onclick="alert('Profile')">Profile</li> -->
-                        <!-- <li onclick="alert('Settings')">Settings</li> -->
-                        <!-- <li onclick="alert('Logout')">Logout</li> -->
-                        <li onclick="alert('Profile')">Language</li>
-                        <li onclick="alert('Profile')">Dardmode/Lightmode</li>
-                        <li onclick="alert('Profile')">Animation</li>
-                        <!-- <li onclick="alert('Profile')">Profile</li> -->
-                    </ul>
+    <div class="main-container">
+        
+        <div class="page-header">
+            <div class="logo"></div>
+            <div class="head-page"></div>
+            <div class="right-head-page">
+                <div class="settings">
+                    <button class="settings-button" aria-label="Settings">☰</button>
+                        <ul class="settings-dropdown">
+                            <!-- <li onclick="alert('Profile')">Profile</li> -->
+                            <!-- <li onclick="alert('Settings')">Settings</li> -->
+                            <!-- <li onclick="alert('Logout')">Logout</li> -->
+                            <li onclick="alert('Profile')">Language</li>
+                            <li onclick="alert('Profile')">Dardmode/Lightmode</li>
+                            <li onclick="alert('Profile')">Animation</li>
+                            <!-- <li onclick="alert('Profile')">Profile</li> -->
+                        </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- <button id="3x3" onclick="buildGrid(3)">3x3</button>
-    <button id="4x4" onclick="buildGrid(4)">4x4</button>
-    <button id="5x5" onclick="buildGrid(5)">5x5</button> -->
+        <!-- <button id="3x3" onclick="buildGrid(3)">3x3</button>
+        <button id="4x4" onclick="buildGrid(4)">4x4</button>
+        <button id="5x5" onclick="buildGrid(5)">5x5</button> -->
 
 
 
 
-
-    <div class="choose-pic-notify"><p>Choose pictue in gallery</p></div>
-    <div class="board-game notify" id="board">
-        <!-- <div class="tile" id="tile1"><span class="tile-number">1</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile2"><span class="tile-number">2</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile3"><span class="tile-number">3</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile4"><span class="tile-number">4</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile5"><span class="tile-number">5</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile6"><span class="tile-number">6</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile7"><span class="tile-number">7</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile8"><span class="tile-number">8</span><img src="sample_pic.jpg"></div>
-        <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div> -->
-    </div>
-    <div class="dropdown-icon " onclick="showPreview()">
-        <div class="preview-icon">
-            <img src="/Assets/icon/image-search.png" alt="preview">
-        </div>
-        <div class="dropdown-picture">
-            <img src="Assets/image/parrot.webp" alt="preview-pic">
-        </div>
-    </div>
-
-
-    <div class="game-option">
-      <div class="controls">
-        <div class="start btn" onclick="startGame()" >Start</div>
-        <div class="restart btn">Restart</div >
-        <div class="pause btn" onclick="toggleTimer()" >Pause</div>
-      </div>
-        <div class="timer">         
-            <div><img class="clock-icon" src="./Assets/icon/clock.png" alt="clock" > Time: <span id="timer">00:00:00</span></div>
-        </div>
-        <div class="steps-count">  
-            <img class="move-icon" src="./Assets/icon/four-arrows.png" alt="move" >
-            <div class="steps">Steps: 0 </div>
-        </div>
-        
-        <button id="merge" style="display: none;"> Merge </button>
-      <div class="controls3">
-        <div class="showTile" onclick="toggleTileNumber()"> Show Tile's Number </div>
-        <div class="dropdown">
-        <div class="dropbtn">Levels</div>
-            <div class="dropdown-content">
-                <a id="lvl10" onclick="buildGrid(10)">10x10</a>
-                <a id="lvl9"  onclick="buildGrid(9)">9x9</a>
-                <a id="lvl8"  onclick="buildGrid(8)">8x8</a>
-                <a id="lvl7"  onclick="buildGrid(7)">7x7</a>
-                <a id="lvl6"  onclick="buildGrid(6)">6x6</a>
-                <a id="lvl5"  onclick="buildGrid(5)">5x5</a>
-                <a id="lvl4"  onclick="buildGrid(4)">4x4</a>
-                <a id="lvl3"  onclick="buildGrid(3)">3x3</a>
+        <div class="playground">
+            <div class="choose-pic-notify"><p>Choose picture in gallery</p></div>
+            <div class="board-game notify" id="board">
+                <!-- <div class="tile" id="tile1"><span class="tile-number">1</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile2"><span class="tile-number">2</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile3"><span class="tile-number">3</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile4"><span class="tile-number">4</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile5"><span class="tile-number">5</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile6"><span class="tile-number">6</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile7"><span class="tile-number">7</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile8"><span class="tile-number">8</span><img src="sample_pic.jpg"></div>
+                <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div> -->
+            </div>
+            <div class="dropdown-icon " onclick="showPreview()">
+                <div class="preview-icon">
+                    <img src="/Assets/icon/image-search.png" alt="preview">
+                </div>
+                <div class="dropdown-picture">
+                    <img src="Assets/image/parrot.webp" alt="preview-pic">
+                </div>
             </div>
         </div>
-       </div>
-    </div>
 
 
-    <!-- <div class="rencently-play">
-        <div class="level-collunm"></div>
-        <div class="time-column"></div>
-        <div class="moves-column"></div>
-    </div>
-     -->
-
-
-    <div class="gallery">
-        <div class="gallery-name">Gallery</div>
-        <div class="index-picture">
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./assets/image/parrot.webp" alt="1"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)" ><img class="tile" src="./Assets/image/A2_33_c020ee18-0c82-4dc1-b16d-c90a64707b20.webp" alt="2"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/arctic-wolf1.png" alt="3"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (1).webp" alt="4"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="/Assets/image/original (2).webp" alt="5"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (3).webp" alt="6"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (4).webp" alt="7"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original.webp" alt="8"></div>
-            <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/sample_pic.jpg" alt="9"></div>
-            <!-- <div class="" onclick="choosingPic(this)"><img class=" tile" src="./Assets/icon/add-add-plus-sign.jpg" alt="9">Add more image</div>   -->
+        <div class="game-option">
+        <div class="controls">
+            <div class="start btn" onclick="startGame()" >Start</div>
+            <div class="restart btn">Restart</div >
+            <div class="pause btn" onclick="toggleTimer()" >Pause</div>
         </div>
-        
+            <div class="timer">         
+                <div><img class="clock-icon" src="./Assets/icon/clock.png" alt="clock" > Time: <span id="timer">00:00:00</span></div>
+            </div>
+            <div class="steps-count">  
+                <img class="move-icon" src="./Assets/icon/four-arrows.png" alt="move" >
+                <div class="steps">Steps: 0 </div>
+            </div>
+            
+            <button id="merge" style="display: none;"> Merge </button>
+        <div class="controls3">
+            <div class="showTile" onclick="toggleTileNumber()"> Show Tile's Number </div>
+            <div class="dropdown">
+            <div class="dropbtn">Levels</div>
+                <div class="dropdown-content">
+                    <a id="lvl10" onclick="buildGrid(10)">10x10</a>
+                    <a id="lvl9"  onclick="buildGrid(9)">9x9</a>
+                    <a id="lvl8"  onclick="buildGrid(8)">8x8</a>
+                    <a id="lvl7"  onclick="buildGrid(7)">7x7</a>
+                    <a id="lvl6"  onclick="buildGrid(6)">6x6</a>
+                    <a id="lvl5"  onclick="buildGrid(5)">5x5</a>
+                    <a id="lvl4"  onclick="buildGrid(4)">4x4</a>
+                    <a id="lvl3"  onclick="buildGrid(3)">3x3</a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <!-- <div class="rencently-play">
+            <div class="level-collunm"></div>
+            <div class="time-column"></div>
+            <div class="moves-column"></div>
+        </div>
+        -->
+
+
+        <div class="gallery">
+            <div class="gallery-name">Gallery</div>
+            <div class="index-picture">
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./assets/image/parrot.webp" alt="1"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)" ><img class="tile" src="./Assets/image/A2_33_c020ee18-0c82-4dc1-b16d-c90a64707b20.webp" alt="2"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/arctic-wolf1.png" alt="3"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (1).webp" alt="4"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="/Assets/image/original (2).webp" alt="5"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (3).webp" alt="6"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original (4).webp" alt="7"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/original.webp" alt="8"></div>
+                <div class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/sample_pic.jpg" alt="9"></div>
+                <!-- <div class="" onclick="choosingPic(this)"><img class=" tile" src="./Assets/icon/add-add-plus-sign.jpg" alt="9">Add more image</div>   -->
+            </div>
+            
+        </div>
+        <!-- <button id="testbtn">test</button> -->
+        <!-- <img class="test" src="./Assets/image/original (1).webp" alt=""> -->
+        <script src="script.js"></script>
     </div>
-    <!-- <button id="testbtn">test</button> -->
-    <!-- <img class="test" src="./Assets/image/original (1).webp" alt=""> -->
-    <script src="script.js"></script>
 </body>
 </html>
