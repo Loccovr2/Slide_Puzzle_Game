@@ -5,6 +5,13 @@ let pickingPicture = `./assets/image/parrot.webp`;
 // const button = document.getElementById("testbtn");
 var playingTable;
 let gameInProgress=false;
+// function timerAnimation() {
+//   if (gameInProgress){
+//     document.documentElement.style.setProperty('--show-timer-animation', '1');
+//   }else{
+//     document.documentElement.style.setProperty('--show-timer-animation', '0');
+//   }
+// }
 
 // button.addEventListener("click", myFunction);
 // function myFunction() {
@@ -71,6 +78,7 @@ function buildGrid(p1){
         if (!ok) return;               // Nếu Cancel thì dừng
         else {
           gameInProgress = false;
+          // timerAnimation();
           const btn = document.querySelector('.start.btn');
           btn.style.removeProperty('pointer-events');
         }  
@@ -234,9 +242,12 @@ function moveTile(tileValue) {
   const restartbtn = document.querySelector('.restart');
   restartbtn.onclick = () => confirmOngoingGame();
   restartbtn.style.removeProperty('pointer-events');
+  // // show animation timer
+  // document.documentElement.style.setProperty('--show-timer-animation', '1');
 
   if (checkWin(playingTable, size)) {
       setTimeout(() => {
+        stopTimer();
         alert('Chúc mừng bạn đã hoàn thành!');
         // Bạn có thể thêm logic reset hoặc hiển thị kết quả ở đây
         document.querySelectorAll('.tile').forEach(tile => {
@@ -256,7 +267,6 @@ function moveTile(tileValue) {
         restartbtn.onclick = null;
         gameInProgress=false;
         
-        stopTimer();
       }, 100);
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
@@ -277,18 +287,20 @@ function checkWin(table, size) {
 // }
 
   function choosingPic(pic) {
+    // Nếu click lại chính phần tử đang được chọn, thì dừng luôn
+    if (pic.classList.contains('choosing-pic')) return;
+
     if (gameInProgress) {
       const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
       if (!ok) return;               // Nếu Cancel thì dừng
       else {
         gameInProgress = false;
+        // timerAnimation();
         const btn = document.querySelector('.start.btn');
         btn.style.removeProperty('pointer-events');
       }  
     }
     
-    // Nếu click lại chính phần tử đang được chọn, thì dừng luôn
-    if (pic.classList.contains('choosing-pic')) return;
     // 1) Xóa choosing-pic khỏi tất cả thẻ div có class gallery-pic
     document.querySelectorAll('div.gallery-pic')
       .forEach(t => t.classList.remove('choosing-pic'));
@@ -314,6 +326,7 @@ function checkWin(table, size) {
     // Mở click game-option
     optionClick.style.pointerEvents='unset';
     optionClick.style.removeProperty('filter');
+
   }
 
 
@@ -355,12 +368,15 @@ function checkWin(table, size) {
         totalSeconds++;
         updateDisplay();
       }, 10);
+      document.documentElement.style.setProperty('--show-timer-animation', 'running');
+
     }
 
     // Dừng đếm
     function stopTimer() {
       clearInterval(timerInterval);
-      timerInterval = null;
+      timerInterval = null; 
+      document.documentElement.style.setProperty('--show-timer-animation', 'paused');
     }
 
     // Đặt lại về 00:00:00
@@ -368,14 +384,20 @@ function checkWin(table, size) {
       stopTimer();
       totalSeconds = 0;
       updateDisplay();
+      document.documentElement.style.setProperty('--show-timer-animation', 'paused');
+
     }
     function toggleTimer() {
       if (timerInterval) {
         // Đang chạy -> tạm dừng
         stopTimer();
+        document.documentElement.style.setProperty('--show-timer-animation', 'paused');
+
       } else {
         // Đang dừng -> tiếp tục
         startTimer();
+        document.documentElement.style.setProperty('--show-timer-animation', 'running');
+
       }
     }
       
@@ -392,6 +414,10 @@ function checkWin(table, size) {
         startGame();
         resetTimer();
         gameInProgress=false;
+        document.documentElement.style.setProperty('--show-timer-animation', 'paused');
+
+        // timerAnimation();
+
       } else {
         // Người dùng chọn Cancel → hủy hành động
         // Có thể log hoặc không làm gì thêm
@@ -416,24 +442,25 @@ function checkWin(table, size) {
     // Setting //
     const settings   = document.querySelector('.settings');
     const settingBtn = settings.querySelector('.settings-button');
+    const rightHeadPage  = document.querySelector('.right-head-page');
 
-    // Toggle open/close khi click nút
-    settingBtn.addEventListener('click', e => {
-      e.stopPropagation();             // ngăn sự kiện nổi bọt
+
+    // 1) Toggle open/close khi click lên toàn vùng right-head-page
+    rightHeadPage.addEventListener('click', e => {
+      e.stopPropagation();        // ngăn nổi bọt để document click không đóng ngay
       settings.classList.toggle('open');
     });
 
-    // Click ra ngoài sẽ đóng dropdown
+    // 2) Click ra ngoài sẽ đóng dropdown
     document.addEventListener('click', () => {
       settings.classList.remove('open');
     });
 
-    // Ngăn đóng khi click vào menu
-    settings.querySelector('.settings-dropdown')
-            .addEventListener('click', e => e.stopPropagation());
-
-            
-    
+    // 3) Ngăn đóng khi click vào chính dropdown
+    dropdown.addEventListener('click', e => {
+      e.stopPropagation();
+    });  
+        
 
 
     

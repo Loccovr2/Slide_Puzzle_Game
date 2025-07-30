@@ -4,6 +4,7 @@
 }
 :root{
     --level: 3;
+    --show-timer-animation: paused;
 }
 
 html, body {
@@ -12,7 +13,9 @@ html, body {
   -ms-user-select: none;      /* IE10+ */
    user-select: none;          /* chuẩn */
 }
-
+img{
+    -webkit-user-drag: none;
+}
 ::-webkit-scrollbar{
 background: linear-gradient(to right, #00c3ff, #ffff1c);
 width: 10px;
@@ -204,7 +207,7 @@ span{
   /* background-color: yellow; */
   z-index: 1;
   justify-items: center;
-  bottom: 40px;
+  bottom: 42px;
   left: -25px;
   /* right: -350px; */
 }
@@ -338,6 +341,9 @@ span{
     height: inherit;
     overflow-x: hidden;
 }
+.gallery:hover .choosing-pic > img {
+    filter: blur(0px);
+}
 
 .index-picture img{   
     /* box-sizing: none; */
@@ -354,6 +360,9 @@ span{
 
 .gallery-pic,.choosing-pic{
     position: relative;
+}
+.choosing-pic > img{
+    filter: blur(5px);
 }
 .gallery-pic::before,.choosing-pic::before {
     position: absolute;
@@ -380,6 +389,7 @@ span{
 }
 
 
+
 /* Game option */
 .game-option{
     width: 400px;
@@ -387,10 +397,10 @@ span{
     position: absolute;
     background-color: #0e173c;
     border: 3px solid rgb(171, 77, 234);
-    color:yellow;
+    color:#ffff00;
     right: 1vw;
     bottom: 5vh;
-    border-radius: 40px;
+    border-radius: 30px;
 }
 
 .game-option > div{
@@ -404,22 +414,23 @@ span{
 .btn{
     display: inline-block;
     cursor: pointer;
-    background-image: linear-gradient(to right, #9575CD 0%, #a044ff  40%, #303F9F  100%);
+    background-image: linear-gradient(to right, #9575CD 0%, #a044ff  40%, #061a9b  100%);
     background-size: 250% auto;
     color: #fff;
     width: 30%;
     border-radius: 30px;
     text-align: center;
+    vertical-align: middle;
     transition: 0.5s;
-
 }
+
 .btn:hover {
     background-position: right center; /* change the direction of the change here */
-    color: #FFD600;
+    color: yellow;
     text-decoration: none;
+    outline: 3px solid #001aff;
+
 }
-
-
 
 .game-option .controls {
   display: flex;
@@ -427,12 +438,30 @@ span{
   justify-content: center; /* Hoặc center nếu muốn chính giữa */
   height: 20%;
 }
-.timer,.steps{
-    margin: 5px 15px;
+
+
+/* 
+.start::before{
+    content: '';
+    position: absolute;
+    opacity: 0.3;
+    background-color: yellow;
+    height: calc(100% + 4px);
+    width: 100%;
+    left: 0;
+    bottom: -1px;
+} */
+
+.timer,.steps-count{
+    margin: 7px 15px;
     width: 220px ;
     height: 40px;
     position: relative;
-    z-index: 3;
+    /* z-index: 1; */
+}
+.steps-count{
+    display: flex;
+    align-items: center;
 }
 .timer > div {
   display: flex;
@@ -440,12 +469,20 @@ span{
   justify-content: center;
   gap: 0.5em;
   background-color: #0e173c;
-
 }
-.clock-icon{
+.steps-count > div {
+    margin-left: 10px;
+}
+.steps-count > img{
+    margin-left: 10px;
+}
+
+
+.clock-icon,.move-icon{
   display: inline-block;      /* bắt chước text */
   width: 1.4em;                 /* bằng 1 chữ cái của font hiện tại */
   height: 1.4em;
+  /* z-index: 4; */
 }
 .showTile{
     width: 200px;
@@ -456,7 +493,21 @@ span{
     border-radius: 30px;
     text-align: center;
     align-content: center;
-    color: #ffdf8f;
+    color: #fff;
+    background-image: linear-gradient(
+        to right, 
+        #d63606 0%, 
+        #d63606 50%, 
+        #6a3093   50%, 
+        #6a3093  100%);
+    background-size: 200% auto;
+    background-position: 100% 0%;
+    transition: 0.2s;
+}
+
+.showTile:hover{
+    background-position: 0% 0%;
+    color: #eaea06;
 }
 
 .timer::before{
@@ -469,42 +520,70 @@ span{
     z-index: -1;
     top: -4px;
     left: -4px;
-    background-image: conic-gradient(from var(--angle),
-    transparent 50%, #001aff,red);    
-    animation: 1s spin linear infinite;
+    background-image: conic-gradient(from var(--angle) ,
+    red, transparent 30%, #001aff,red);    
+    animation: 2s spin linear infinite;
+    animation-play-state: var(--show-timer-animation);
 }
 
 .controls3{
     height: 23%;
     display: flex;
-    margin: 10px;
+    margin: 7px;
     gap: 40px;
 }
 
-/* .start{
-    position: relative;
+
+
+
+
+
+/* Logo */
+.logo{
+    position: absolute;
+    background-color: #110c47;
+    border: 3px solid rgb(148, 123, 255);
+    border-left: none;
+    border-top: none;
+    width: 400px;
+    height: 90px;
+    border-bottom-right-radius: 100px;
+    z-index: 2;
 }
 
-.start::before{
-    content: '';
+.head-page{
     position: absolute;
-    background-color: yellow;
-    height: 100%;
-    width: 100%;
-} */
-
-
-/* Setting */
-/* .settings{
-    width: 50px;
+    background-color: #4a2982;
+    width: 100vw;
     height: 50px;
-    position: absolute;
-    background-color: #00ff0e;
-    color: yellow;
-    right: 100px;
-    top: 100px;
-    /* z-index: 3; */
+    z-index: 1;
+}
 
+.right-head-page{
+    position: absolute;
+    background-color: #312f4f;
+    border-left: 3px solid rgb(148, 123, 255);
+    border-bottom: 3px solid rgb(148, 123, 255);
+    width: 100px;
+    height: 90px;
+    border-bottom-left-radius: 100px;
+    z-index: 2; 
+    right: 0;
+    transition: 0.5s;
+}
+
+.right-head-page:hover{
+    background-color: #110c47;
+    cursor: pointer;
+    border-bottom-left-radius: 10px;
+    width: 250px;
+    height: 300px;
+}
+.right-head-page:hover .settings-button{
+    background-color: #0099ff;
+    cursor: pointer;
+}
+/* Setting */  
 /* Container chung */
     .settings {
         position: absolute;
@@ -530,8 +609,10 @@ span{
       cursor: pointer;
       user-select: none;
       background-color: rgb(38, 3, 116);
-      border: 3px solid rgb(198, 106, 255);
+      border: 3px solid #0099ff;
     }
+
+
 
     /* Dropdown menu */
     .settings-dropdown {
@@ -542,7 +623,7 @@ span{
       padding: 0;
       list-style: none;
       background: #fff;
-      border: 1px solid #ccc;
+      /* border: 1px solid #ccc; */
       border-radius: 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       display: none;   /* ẩn mặc định */
@@ -559,40 +640,20 @@ span{
     .settings-dropdown li {
       padding: 8px 12px;
       cursor: pointer;
+      background-color: gold;
+      border-top: 2px solid red;
     }
     .settings-dropdown li:hover {
       background-color: #f0f0f0;
     }
-/* Logo */
-.logo{
-    position: absolute;
-    background-color: #110c47;
-    border: 3px solid rgb(148, 123, 255);
-    border-left: none;
-    border-top: none;
-    width: 400px;
-    height: 90px;
-    border-bottom-right-radius: 100px;
-    z-index: 2;
-}
 
-.head-page{
-    position: absolute;
-    background-color: #4a2982;
-    width: 100vw;
-    height: 50px;
-    z-index: 1;
-}
 
-.right-head-page{
-    position: absolute;
-    background-color: #60053c;
-    width: 100px;
-    height: 90px;
-    border-bottom-left-radius: 100px;
-    z-index: 2; 
-    right: 0;
-}
+
+
+
+
+
+
 
 /* Preview */
 .dropdown-icon{

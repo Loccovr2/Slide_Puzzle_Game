@@ -8,13 +8,28 @@
 </head>
 <body>
 
-
-    <div class="logo"></div>
-    <div class="head-page"></div>
-    <div class="right-head-page"></div>
+    <div class="page-header">
+        <div class="logo"></div>
+        <div class="head-page"></div>
+        <div class="right-head-page">
+            <div class="settings">
+                <button class="settings-button" aria-label="Settings">☰</button>
+                    <ul class="settings-dropdown">
+                        <!-- <li onclick="alert('Profile')">Profile</li> -->
+                        <!-- <li onclick="alert('Settings')">Settings</li> -->
+                        <!-- <li onclick="alert('Logout')">Logout</li> -->
+                        <li onclick="alert('Profile')">Language</li>
+                        <li onclick="alert('Profile')">Dardmode/Lightmode</li>
+                        <li onclick="alert('Profile')">Animation</li>
+                        <!-- <li onclick="alert('Profile')">Profile</li> -->
+                    </ul>
+            </div>
+        </div>
+    </div>
     <!-- <button id="3x3" onclick="buildGrid(3)">3x3</button>
     <button id="4x4" onclick="buildGrid(4)">4x4</button>
     <button id="5x5" onclick="buildGrid(5)">5x5</button> -->
+
 
 
 
@@ -43,14 +58,18 @@
 
     <div class="game-option">
       <div class="controls">
-        <div class="start btn" onclick="startGame()" >start</div>
-        <div class="restart btn">restart</div >
-        <div class="pause btn" onclick="toggleTimer()" >pause</div>
+        <div class="start btn" onclick="startGame()" >Start</div>
+        <div class="restart btn">Restart</div >
+        <div class="pause btn" onclick="toggleTimer()" >Pause</div>
       </div>
         <div class="timer">         
-            <div><img class="clock-icon" src="./Assets/icon/clock.png" alt="clock"> Time: <span id="timer">00:00:00</span></div>
+            <div><img class="clock-icon" src="./Assets/icon/clock.png" alt="clock" > Time: <span id="timer">00:00:00</span></div>
         </div>
-        <div class="steps">Steps: 0 </div>
+        <div class="steps-count">  
+            <img class="move-icon" src="./Assets/icon/four-arrows.png" alt="move" >
+            <div class="steps">Steps: 0 </div>
+        </div>
+        
         <button id="merge" style="display: none;"> Merge </button>
       <div class="controls3">
         <div class="showTile" onclick="toggleTileNumber()"> Show Tile's Number </div>
@@ -77,19 +96,6 @@
         <div class="moves-column"></div>
     </div>
      -->
-    <div class="settings">
-        <button class="settings-button" aria-label="Settings">☰</button>
-            <ul class="settings-dropdown">
-                <!-- <li onclick="alert('Profile')">Profile</li> -->
-                <!-- <li onclick="alert('Settings')">Settings</li> -->
-                <!-- <li onclick="alert('Logout')">Logout</li> -->
-                <li onclick="alert('Profile')">Language</li>
-                <li onclick="alert('Profile')">Dardmode/Lightmode</li>
-                <li onclick="alert('Profile')">Animation</li>
-                <!-- <li onclick="alert('Profile')">Profile</li> -->
-
-            </ul>
-    </div>
 
 
     <div class="gallery">
