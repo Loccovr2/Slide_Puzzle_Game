@@ -444,8 +444,16 @@ span{
     color: yellow;
     text-decoration: none;
     outline: 3px solid #001aff;
-
 }
+
+.no-pointer{
+    pointer-events: none;
+}
+
+.pause,.restart{
+    visibility: hidden;
+}
+
 
 .game-option .controls {
   display: flex;
@@ -678,6 +686,7 @@ span{
 
 /* Preview */
 .dropdown-icon{
+    visibility: hidden ;
     position: absolute;
     cursor: pointer;
     pointer-events: none;

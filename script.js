@@ -12,6 +12,10 @@ let gameInProgress=false;
 //     document.documentElement.style.setProperty('--show-timer-animation', '0');
 //   }
 // }
+const previewBtn = document.querySelector('.dropdown-icon');
+const startBtn = document.querySelector('.start.btn');
+const pauseBtn = document.querySelector('.pause.btn');
+const restartbtn = document.querySelector('.restart');
 
 // button.addEventListener("click", myFunction);
 // function myFunction() {
@@ -79,8 +83,7 @@ function buildGrid(p1){
         else {
           gameInProgress = false;
           // timerAnimation();
-          const btn = document.querySelector('.start.btn');
-          btn.style.removeProperty('pointer-events');
+          startBtn.style.removeProperty('pointer-events');
         }  
       }
       size=p1;
@@ -236,17 +239,19 @@ function moveTile(tileValue) {
   // alert(playingTable);
   countStep();
   startTimer();
-  const btn = document.querySelector('.start.btn');
   btn.style.pointerEvents = 'none';
   // 
-  const restartbtn = document.querySelector('.restart');
   restartbtn.onclick = () => confirmOngoingGame();
   restartbtn.style.removeProperty('pointer-events');
+  // hiện nút pause và restart 
+  restartbtn.style.visibility='visible';
+  pauseBtn.style.visibility='visible';
+
   // // show animation timer
   // document.documentElement.style.setProperty('--show-timer-animation', '1');
 
   if (checkWin(playingTable, size)) {
-      setTimeout(() => {
+        gameInProgress=false;
         stopTimer();
         alert('Chúc mừng bạn đã hoàn thành!');
         // Bạn có thể thêm logic reset hoặc hiển thị kết quả ở đây
@@ -263,11 +268,16 @@ function moveTile(tileValue) {
         blank.classList.remove('blank');
 
         previewBtn.style.pointerEvents = 'unset';
+        previewBtn.style.visibility = 'hidden';
+
         btn.style.removeProperty('pointer-events');
         restartbtn.onclick = null;
-        gameInProgress=false;
-        
-      }, 100);
+
+        pauseBtn.classList.add('no-pointer');
+        // ẩn nút restar và pause sau khi win
+        restartbtn.style.visibility='hidden';
+        pauseBtn.style.visibility='hidden';
+        startBtn.innerHTML='Play Again';
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
 
@@ -296,8 +306,7 @@ function checkWin(table, size) {
       else {
         gameInProgress = false;
         // timerAnimation();
-        const btn = document.querySelector('.start.btn');
-        btn.style.removeProperty('pointer-events');
+        startBtn.style.removeProperty('pointer-events');
       }  
     }
     
@@ -321,11 +330,12 @@ function checkWin(table, size) {
     buildGrid(size);
     resetTimer();
     // Mơ cho phép nhấn Preview ảnh
-    const previewBtn = document.querySelector('.dropdown-icon')
     previewBtn.style.pointerEvents = 'unset';
+    previewBtn.style.visibility = 'visible';
     // Mở click game-option
     optionClick.style.pointerEvents='unset';
     optionClick.style.removeProperty('filter');
+    
 
   }
 
@@ -363,6 +373,7 @@ function checkWin(table, size) {
 
     // Bắt đầu đếm
     function startTimer() {
+      pauseBtn.classList.remove('no-pointer');
       if (timerInterval !== null) return; // nếu đang chạy thì thôi
       timerInterval = setInterval(() => {
         totalSeconds++;
@@ -381,6 +392,7 @@ function checkWin(table, size) {
 
     // Đặt lại về 00:00:00
     function resetTimer() {
+      pauseBtn.classList.add('no-pointer');
       stopTimer();
       totalSeconds = 0;
       updateDisplay();
@@ -403,19 +415,28 @@ function checkWin(table, size) {
       
     function confirmOngoingGame() {
       // Thông báo kèm hai lựa chọn OK/Cancel
+      // if(!gameInProgress){
+      //   startGame();
+      //   resetTimer();
+      //   return;
+      // } 
+
       if(!gameInProgress){
-        startGame();
-        resetTimer();
         return;
       } 
       const proceed = window.confirm('Trò chơi vẫn đang diễn ra, bạn chắc chắn muốn tiếp tục?');
       if (proceed) {
         // Người dùng chọn OK → làm tiếp hành động (ví dụ restart)
+        gameInProgress=false;
+
+
         startGame();
         resetTimer();
-        gameInProgress=false;
+        
         document.documentElement.style.setProperty('--show-timer-animation', 'paused');
 
+        restartbtn.style.visibility='hidden';
+        pauseBtn.style.visibility='hidden';
         // timerAnimation();
 
       } else {
