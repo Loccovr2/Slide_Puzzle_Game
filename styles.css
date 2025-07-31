@@ -572,6 +572,40 @@ span{
     height: 90px;
     border-bottom-right-radius: 100px;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.logo-image{
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    z-index: 4;
+    left: 40px;
+    transform: rotate(225deg);
+    /* margin: 20px 20px; */
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+
+    /* 2) Dùng image làm mask */
+    -webkit-mask: url('./Assets/icon/logo1.png') no-repeat center / contain; 
+     mask: url('./Assets/icon/logo1.png') no-repeat center / contain;
+
+    /* 3) Cho an toàn, đảm bảo không lặp lại */
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+}
+.name-logo{
+  font-size: 3.5em;
+  background: linear-gradient(to right, #30CFD0 0%, #89bf00 100%); 
+  background-clip: text;
+  color: transparent;
+}
+.name-logo span{
+  font-family: "Lucida Console", "Courier New", monospace;
+
 }
 
 .head-page{

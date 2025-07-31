@@ -86,6 +86,9 @@ function buildGrid(p1){
           startBtn.style.removeProperty('pointer-events');
         }  
       }
+        startBtn.style.removeProperty('pointer-events');
+        restartbtn.style.visibility='hidden';
+        pauseBtn.style.visibility='hidden';
       size=p1;
       boardGame.innerHTML = '';
       resetStep();
@@ -274,10 +277,12 @@ function moveTile(tileValue) {
         restartbtn.onclick = null;
 
         pauseBtn.classList.add('no-pointer');
+        startBtn.classList.remove('no-pointer');
+
         // ẩn nút restar và pause sau khi win
         restartbtn.style.visibility='hidden';
         pauseBtn.style.visibility='hidden';
-        startBtn.innerHTML='Play Again';
+        // startBtn.innerHTML='Play Again';
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
 
@@ -306,7 +311,6 @@ function checkWin(table, size) {
       else {
         gameInProgress = false;
         // timerAnimation();
-        startBtn.style.removeProperty('pointer-events');
       }  
     }
     
@@ -374,6 +378,8 @@ function checkWin(table, size) {
     // Bắt đầu đếm
     function startTimer() {
       pauseBtn.classList.remove('no-pointer');
+      startBtn.classList.add('no-pointer');
+
       if (timerInterval !== null) return; // nếu đang chạy thì thôi
       timerInterval = setInterval(() => {
         totalSeconds++;
@@ -393,6 +399,7 @@ function checkWin(table, size) {
     // Đặt lại về 00:00:00
     function resetTimer() {
       pauseBtn.classList.add('no-pointer');
+      startBtn.classList.remove('no-pointer');
       stopTimer();
       totalSeconds = 0;
       updateDisplay();
