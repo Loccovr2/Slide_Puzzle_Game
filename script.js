@@ -17,6 +17,7 @@ const startBtn = document.querySelector('.start.btn');
 const pauseBtn = document.querySelector('.pause.btn');
 const restartbtn = document.querySelector('.restart');
 
+
 // button.addEventListener("click", myFunction);
 // function myFunction() {
 //   let x = playingTable.indexOf((size*size)-1);
@@ -249,14 +250,14 @@ function moveTile(tileValue) {
   // hiện nút pause và restart 
   restartbtn.style.visibility='visible';
   pauseBtn.style.visibility='visible';
-
+  pauseBtn.innerHTML='⏸︎Pause'
+  pauseBtn.style.outline=''
   // // show animation timer
   // document.documentElement.style.setProperty('--show-timer-animation', '1');
 
   if (checkWin(playingTable, size)) {
         gameInProgress=false;
         stopTimer();
-        alert('Chúc mừng bạn đã hoàn thành!');
         // Bạn có thể thêm logic reset hoặc hiển thị kết quả ở đây
         document.querySelectorAll('.tile').forEach(tile => {
         tile.classList.add('stop-move');
@@ -285,6 +286,10 @@ function moveTile(tileValue) {
         // startBtn.innerHTML='Play Again';
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
+      setTimeout(() => {
+        alert('Chúc mừng bạn đã hoàn thành!');
+      }, 1000);  
+      
 
     }
 }
@@ -411,11 +416,15 @@ function checkWin(table, size) {
         // Đang chạy -> tạm dừng
         stopTimer();
         document.documentElement.style.setProperty('--show-timer-animation', 'paused');
+        pauseBtn.innerHTML='▶Continue';
+        pauseBtn.style.outline='3px solid #ff0000ff'
 
       } else {
         // Đang dừng -> tiếp tục
         startTimer();
         document.documentElement.style.setProperty('--show-timer-animation', 'running');
+        pauseBtn.innerHTML='⏸︎Pause';
+        pauseBtn.style.outline=''
 
       }
     }
@@ -471,29 +480,28 @@ function checkWin(table, size) {
     const settings   = document.querySelector('.settings');
     const settingBtn = settings.querySelector('.settings-button');
     const rightHeadPage  = document.querySelector('.right-head-page');
+    const dropdown      = settings.querySelector('.dropdown');
 
 
     // 1) Toggle open/close khi click lên toàn vùng right-head-page
-    rightHeadPage.addEventListener('click', e => {
+    settingBtn.addEventListener('click', e => {
       e.stopPropagation();        // ngăn nổi bọt để document click không đóng ngay
       settings.classList.toggle('open');
+      rightHeadPage.classList.toggle('open-setting');
     });
+
 
     // 2) Click ra ngoài sẽ đóng dropdown
     document.addEventListener('click', () => {
       settings.classList.remove('open');
+      rightHeadPage.classList.remove('open-setting');
     });
 
     // 3) Ngăn đóng khi click vào chính dropdown
-    dropdown.addEventListener('click', e => {
+    rightHeadPage.addEventListener('click', e => {
       e.stopPropagation();
     });  
-        
-
-
-    
-
-
+      
 
 
 

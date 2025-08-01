@@ -435,7 +435,6 @@ span{
     width: 30%;
     border-radius: 30px;
     text-align: center;
-    vertical-align: middle;
     transition: 0.5s;
 }
 
@@ -443,7 +442,7 @@ span{
     background-position: right center; /* change the direction of the change here */
     color: yellow;
     text-decoration: none;
-    outline: 3px solid #001aff;
+    outline: 3px solid #ff0000ff;
 }
 
 .no-pointer{
@@ -454,11 +453,23 @@ span{
     visibility: hidden;
 }
 
+.pause,.restart{
+  display: flex;            
+  align-items: center;       /* căn giữa theo trục dọc */
+  justify-content: center;   /* căn giữa theo trục ngang */
+  font-size: 1.2rem !important;
+
+}
+
+.controls > div {
+    height: 100%;
+}
 
 .game-option .controls {
   display: flex;
   gap: 10px;               /* Khoảng cách giữa các nút */
-  justify-content: center; /* Hoặc center nếu muốn chính giữa */
+  justify-content: center; 
+  align-items: center;      /* căn theo trục dọc */
   height: 20%;
 }
 
@@ -481,6 +492,7 @@ span{
     height: 40px;
     position: relative;
     z-index: 2;
+   
 }
 .steps-count{
     display: flex;
@@ -605,7 +617,7 @@ span{
 }
 .name-logo span{
   font-family: "Lucida Console", "Courier New", monospace;
-
+  font-size: 4rem;
 }
 
 .head-page{
@@ -631,11 +643,16 @@ span{
 
 .right-head-page:hover{
     background-color: #110c47;
-    cursor: pointer;
+}
+
+.open-setting{
+    cursor: default;
+    background-color: #110c47;
     border-bottom-left-radius: 10px;
     width: 250px;
     height: 300px;
 }
+
 .right-head-page:hover .settings-button{
     background-color: #0099ff;
     cursor: pointer;
@@ -645,11 +662,12 @@ span{
     .settings {
         position: absolute;
         display: inline-block;
-        width: 50px;
+        width: 100%;
         height: 50px;
-        right: 10px;
         top: 10px;
         z-index: 3;
+        right: 0;
+
     }
 
     /* Nút kích hoạt dropdown */
@@ -667,16 +685,15 @@ span{
       user-select: none;
       background-color: rgb(38, 3, 116);
       border: 3px solid #0099ff;
+      position: absolute;
+      right: 10px;
     }
-
-
 
     /* Dropdown menu */
     .settings-dropdown {
       position: absolute;
       top: 100%;       /* ngay dưới nút */
-      right: 0;
-      margin-top: 8px;
+      right: 10px;
       padding: 0;
       list-style: none;
       background: #fff;
@@ -684,25 +701,44 @@ span{
       border-radius: 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       display: none;   /* ẩn mặc định */
-      min-width: 150px;
-      z-index: 100;
+      width: 90%;
+      opacity: 0;
+      overflow: hidden;
+      z-index: 5;
     }
 
     /* Khi mở */
     .settings.open .settings-dropdown {
       display: block;
+      opacity: 1;
     }
+
+    /* .settings-dropdown::before{
+    position: absolute;
+    content: '';
+    cursor: pointer;
+    border-bottom-left-radius: 10px;
+    width: 250px;
+    height: 300px;
+    background-color: yellow;
+    z-index: -1;
+    top: 0;       
+    right: 0;
+    }
+ */
 
     /* Các mục trong dropdown */
     .settings-dropdown li {
       padding: 8px 12px;
       cursor: pointer;
-      background-color: gold;
-      border-top: 2px solid red;
+      color: gold   ;
+      background-color: #110c47;
+      border-top: 2px solid rgb(255, 255, 255);
     }
     .settings-dropdown li:hover {
-      background-color: #f0f0f0;
+      background-image: linear-gradient(to right, #00c3ff, #ffff1c);;
     }
+
 
 
 
