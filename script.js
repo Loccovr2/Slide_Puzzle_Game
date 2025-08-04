@@ -15,6 +15,7 @@ let gameInProgress=false;
 const previewBtn = document.querySelector('.dropdown-icon');
 const startBtn = document.querySelector('.start.btn');
 const pauseBtn = document.querySelector('.pause.btn');
+const pauseBtnIcon = pauseBtn.querySelector('span')
 const restartbtn = document.querySelector('.restart');
 
 
@@ -33,6 +34,15 @@ const restartbtn = document.querySelector('.restart');
         el.style.visibility = (current === 'hidden') ? 'visible' : 'hidden';
       });
     }
+
+// function confirm(check){
+//   if (check){
+//     return true;
+//   }else{
+//     return false
+//   }
+// }
+
 
 
 // Tắt click trong game option
@@ -65,7 +75,8 @@ function startGame(){
     tile.classList.remove('stop-move');
   });
   // 
-
+  previewBtn.style.pointerEvents = 'unset';
+  previewBtn.style.visibility = 'visible';
 }
 
 
@@ -90,6 +101,7 @@ function buildGrid(p1){
         startBtn.style.removeProperty('pointer-events');
         restartbtn.style.visibility='hidden';
         pauseBtn.style.visibility='hidden';
+        pauseBtnIcon.style.visibility='hidden';
       size=p1;
       boardGame.innerHTML = '';
       resetStep();
@@ -250,8 +262,10 @@ function moveTile(tileValue) {
   // hiện nút pause và restart 
   restartbtn.style.visibility='visible';
   pauseBtn.style.visibility='visible';
-  pauseBtn.innerHTML='⏸︎Pause'
   pauseBtn.style.outline=''
+  pauseBtn.childNodes[0].nodeValue = '⏸';
+  pauseBtnIcon.innerText = 'Pause';
+  pauseBtnIcon.style.visibility='visible';
   // // show animation timer
   // document.documentElement.style.setProperty('--show-timer-animation', '1');
 
@@ -283,6 +297,8 @@ function moveTile(tileValue) {
         // ẩn nút restar và pause sau khi win
         restartbtn.style.visibility='hidden';
         pauseBtn.style.visibility='hidden';
+        pauseBtnIcon.style.visibility='hidden';
+
         // startBtn.innerHTML='Play Again';
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
@@ -416,14 +432,17 @@ function checkWin(table, size) {
         // Đang chạy -> tạm dừng
         stopTimer();
         document.documentElement.style.setProperty('--show-timer-animation', 'paused');
-        pauseBtn.innerHTML='▶Continue';
+        pauseBtn.childNodes[0].nodeValue = '⏵';
+        pauseBtnIcon.style.visibility='visible';
+        pauseBtnIcon.innerText='Continue'
         pauseBtn.style.outline='3px solid #ff0000ff'
 
       } else {
         // Đang dừng -> tiếp tục
         startTimer();
         document.documentElement.style.setProperty('--show-timer-animation', 'running');
-        pauseBtn.innerHTML='⏸︎Pause';
+        pauseBtn.childNodes[0].nodeValue = '⏸';
+        pauseBtnIcon.innerText='Pause'
         pauseBtn.style.outline=''
 
       }
@@ -461,10 +480,12 @@ function checkWin(table, size) {
         console.log('Người dùng đã hủy thao tác.');
       }
     }
+  
+const pic = document.querySelector('.dropdown-picture img');
+const moveOptionBoard = document.querySelector('.game-option');
 
     // Preview Picture
     function showPreview() {
-      const pic = document.querySelector('.dropdown-picture img');
       pic.src=pickingPicture;
       // Toggle its visibility
       if (pic.style.display === 'block') {
@@ -474,7 +495,17 @@ function checkWin(table, size) {
       }
     }
 
-
+    function showPreview600px() {
+      pic.src=pickingPicture;
+      // Toggle its visibility
+      if (pic.style.display === 'block') {
+        pic.style.display = 'none';
+        moveOptionBoard.classList.remove('game-option-move-below600px');
+      } else {
+        moveOptionBoard.classList.add('game-option-move-below600px');
+        pic.style.display = 'block';
+      }
+    }
 
     // Setting //
     const settings   = document.querySelector('.settings');
@@ -502,6 +533,38 @@ function checkWin(table, size) {
       e.stopPropagation();
     });  
       
+// Responsive
+    // 1. Định nghĩa media query giống CSS
+    const mq = window.matchMedia('(max-width: 600px)');
+    // 2. Hàm update nội dung
+    function updateContent(e) {
+      const restartText = document.querySelector('.restart');
+      const hideTime = document.querySelector('.timer > div > #name-Time');
+
+      if (e.matches) {
+        // Khi màn ≤ 600px (mobile)
+        restartText.textContent = '⟳';
+        pauseBtnIcon.style.display = 'none';
+        hideTime.style.display='none';
+        // if (pic.style.display === 'block') {
+        //   pic.style.display = 'none';
+        //   moveOptionBoard.classList.remove('game-option-move-below600px');
+        // } else {
+        //   moveOptionBoard.classList.add('game-option-move-below600px');
+        //   pic.style.display = 'block';
+        // }
+        document.querySelector('[onclick="showPreview()"]').setAttribute('onclick', 'showPreview600px()');
+      } else {
+        // Khi màn > 600px (tablet/desktop)
+        restartText.textContent = '⟳Restart';
+        pauseBtnIcon.style.display = '';
+        hideTime.style.display='';
+      }
+    }
+
+    // 3. Kiểm tra lần đầu và lắng nghe thay đổi
+    mq.addEventListener('change', updateContent);
+    updateContent(mq);
 
 
 

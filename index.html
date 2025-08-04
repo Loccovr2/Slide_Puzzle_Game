@@ -39,7 +39,14 @@
 
         <div class="playground">
             <div class="choose-pic-notify"><p>Choose picture in gallery</p></div>
-            <div class="board-game notify" id="board">
+            <!-- <div class="game-notify">
+                <div class="ingame-notify">
+                    <div class="notify">Continue?</div>
+                    <div class="restart-game" onclick="confirm(true)">Yes</div>
+                    <div class="continue-game" onclick="confirm(false)">No</div>
+                </div>
+            </div> -->
+            <div class="board-game" id="board">
                 <!-- <div class="tile" id="tile1"><span class="tile-number">1</span><img src="sample_pic.jpg"></div>
                 <div class="tile" id="tile2"><span class="tile-number">2</span><img src="sample_pic.jpg"></div>
                 <div class="tile" id="tile3"><span class="tile-number">3</span><img src="sample_pic.jpg"></div>
@@ -51,7 +58,7 @@
                 <div class="tile" id="tile9"><span class="tile-number">9</span><img src="sample_pic.jpg"></div> -->
             </div>
             <div class="dropdown-icon " onclick="showPreview()">
-                <div class="preview-icon">
+                <div class="preview-icon"  title="Preview image">
                     <img src="/Assets/icon/image-search.png" alt="preview">
                 </div>
                 <div class="dropdown-picture">
@@ -61,14 +68,14 @@
         </div>
 
 
-        <div class="game-option">
-        <div class="controls">
-            <div class="start btn" onclick="startGame()" >Start</div>
-            <div class="restart btn">⟳Restart</div >
-            <div class="pause btn no-pointer" onclick="toggleTimer()">⏸Pause</div>
-        </div>
+        <div class="game-option ">
+            <div class="controls">
+                <div class="start btn" onclick="startGame()" >Start</div>
+                <div class="restart btn">⟳<span>Restart</span></div>
+                <div class="pause btn no-pointer" onclick="toggleTimer()">⏸<span>Pause</span></div>
+            </div>
             <div class="timer">         
-                <div><img class="clock-icon" src="./Assets/icon/clock.png" alt="clock" > Time: <span id="timer">00:00:00</span></div>
+                <div><img class="clock-icon" src="./Assets/icon/clock.png" alt="clock" > <span id="name-Time">Time: </span><span id="timer">00:00:00</span></div>
             </div>
             <div class="steps-count">  
                 <img class="move-icon" src="./Assets/icon/four-arrows.png" alt="move" >
