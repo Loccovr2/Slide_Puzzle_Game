@@ -124,15 +124,15 @@ button{
 
 .playground{
     position: absolute;
-    height: 40vw;
-    width: calc(40vw + 60px);
-    left: 28%;
-    bottom: 5vh;
+    height: calc(370px + 15vw);
+    width: calc(370px + 15vw);
+    left: 100px ;
+    top: 115px;
 }
 .board-game,.choose-pic-notify{
     position: absolute;
     height: 100%;
-    width: calc(100% - 60px);
+    width: 100%;
     /* left: 28%;
     top: 10vh; */
 }
@@ -762,8 +762,14 @@ span{
       width: 90%;
       overflow: hidden;
       z-index: 5;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
     }
-
+        @keyframes fadeIn {
+        0% { opacity: 0; }
+        50% { opacity: 0.5; }
+        100%{ opacity: 1; }
+        }
     /* Khi mở */
     .settings.open .settings-dropdown {
       display: block;
@@ -809,7 +815,7 @@ span{
     height: 50px;
     width: 50px;
     z-index: 2;
-    right: 0;
+    right: -70px;
     /* right: 27.5%;
     top: 10vh; */
     
@@ -891,26 +897,121 @@ span{
         height: calc(100% - 60px);
         width: 100%;
     }
+} */ 
+/* <600px, 601px,768px,992px,1200px */
+/* @media only screen and (max-width: 768px) and (min-width:  601px) {
+    *{
+        border: 1px solid rgb(0, 255, 0);
+    }
 } */
-@media only screen and (max-width: 600px) {
+
+@media only screen and (min-width: 1200px) {
+    /* *{
+        border: 1px solid rgb(242, 255, 0);
+    } */
+
+    .playground{
+        left: 20vw  !important;
+        top: 125px;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    /* gallery */
+        .gallery{
+            bottom: calc(-80% + 50px );
+        }
+        .gallery:hover{
+            bottom: 0;
+            z-index: 16;
+        }
+
+        /* .gallery{
+        width: 180px;
+        height: 80%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: width 0.5s;
+        z-index: 4;
+    } */
+
+}
+@media only screen and (max-width: 1199px) and (min-width: 993px) {
+    .playground{
+        left: 4vw !important;
+    }
+    .game-option{
+        right: 2vw !important;
+    }
+
+}
+
+@media only screen and (max-width: 992px) and (min-width: 769px) {
+    /* *{
+        border: 1px solid rgb(55, 0, 255);
+    } */
+
+    .playground{
+        width: 55vw !important; height: 55vw !important;
+        display: flex;
+        justify-content: center;
+        left: 5vw !important;
+        right: unset;
+        bottom: unset;
+        top: 65px;
+    }
+    .timer > div > #name-Time{
+        display: none;
+    }
+    .dropdown-icon{
+        bottom: unset !important;
+        top: 0;
+        right: -60px !important;
+    }
+
+    .dropdown-picture img{
+        left: 0px !important;
+        top: 50px !important;
+        height: calc(250px + 5vw) !important;
+        width: calc(250px + 5vw)  !important;
+        transform-origin: top left !important;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 992px) {
     .main-container{
         display: flex; 
         justify-content: center;
     }
     
     .playground{
-        min-width: 50vh; min-height: 50vh;
+        width: 53vh; height: 53vh;
         /* min-width:calc(400px + 60px); min-height:400px ; */
 
-        /* display: flex;
-        justify-content: center; */
+        display: flex;
+        justify-content: center;
         left: unset;
+        right: unset;
+        bottom: unset;
+        top: 65px;
+        /* left: unset;
         right: 80px;
         bottom: none;
-        top: 65px;
+        top: 65px; */
 
     }
-
+    .board-game,.choose-pic-notify{
+        position: absolute;
+        height: calc(100%);
+        width: 100%;
+    }
+    .choose-pic-notify{
+        font-size: 2em;
+    }
+/* headpage */
     .page-header{
         z-index: 3;
     }
@@ -937,7 +1038,7 @@ span{
     }
     .logo{
         gap: 10px;
-}
+    }
     .name-logo{
         font-size: 2.5em;
     }
@@ -952,6 +1053,28 @@ span{
     .settings{
         top: 0;
     }
+
+/* preview */
+    .dropdown-icon{
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        z-index: 10;
+        bottom: 0px;
+        right: -50px;
+    }
+
+    .dropdown-picture img{
+        left: -220px;
+        top: 60px;
+        height: 250px;
+        width: 250px;
+        transform-origin: top right;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+/* game option */
     .game-option{
         bottom: 10px;
         right: 10px;
@@ -962,9 +1085,10 @@ span{
     .game-option-move-below600px{
         right: unset; 
         left: 10px !important;
-        width: 200px;
+        width: 40vw;
         bottom: 70px;
         transition: 0.2s;
+        
     }
     .controls3{
        gap: 10px;
@@ -975,9 +1099,7 @@ span{
         width: 150px ;
         font-size: 10px;
     }
-    .start{
-        font-size: 1rem;
-    }
+
     .showTile{
         width: 200px;
         height: 100%;
@@ -1000,92 +1122,14 @@ span{
     span.tile-number {
         font-size: 1rem;
     }
-/* .controls3{
-    height: 23%;
-    display: flex;
-    margin: 7px;
-    gap: 40px;
-} */
 
-/* .game-option{
-    width: 400px;
-    height: 200px;
-    position: absolute;
-    background-color: #0e173c;
-    border: 3px solid rgb(171, 77, 234);
-    color:#ffff00;
-    right: 1vw;
-    bottom: 5vh;
-    border-radius: 30px;
 }
 
-.game-option > div{
-    font-size: 1.5em;
-}
-.game-option{
-    padding: 8px 4px;
-    
-} */
-    
-/* .logo{
-    position: absolute;
-
-
-    width: 400px;
-    height: 90px;
-    border-bottom-right-radius: 100px;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-} */
-/* .playground{
-    position: absolute;
-    height: 40vw;
-    width: calc(40vw + 60px);
-    left: 28%;
-    bottom: 5vh;
-} */
-
-.board-game,.choose-pic-notify{
-    position: absolute;
-    height: calc(100%);
-    width: 100%;
-}
- .dropdown-icon{
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    z-index: 10;
-    bottom: 0px;
-    right: -55px;
-}
-
- .dropdown-picture img{
-    left: -210px;
-    top: 60px;
-    height: 250px;
-    width: 250px;
-    transform-origin: top right;
-}
-
-    .gallery{
-        bottom: calc(-80% + 50px );
+@media only screen and (max-width: 550px) {
+    .playground{
+        left: 20px !important;
     }
-    .gallery:hover{
-        bottom: 0;
-        z-index: 16;
+    .dropdown-picture img{
+        left: -195px;
     }
-    /* .gallery{
-    width: 180px;
-    height: 80%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transition: width 0.5s;
-    z-index: 4;
-} */
-
-
 }

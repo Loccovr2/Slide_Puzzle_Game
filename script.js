@@ -495,13 +495,24 @@ const moveOptionBoard = document.querySelector('.game-option');
       }
     }
 
+    const playGround = document.querySelector('.playground');
+    const startText = document.querySelector('.start');
     function showPreview600px() {
       pic.src=pickingPicture;
+
       // Toggle its visibility
       if (pic.style.display === 'block') {
-        pic.style.display = 'none';
+        playGround.style.minWidth='55vh';
+        playGround.style.minHeight='55vh';
+        startText.style.fontSize='1.5rem';
+
         moveOptionBoard.classList.remove('game-option-move-below600px');
+        pic.style.display = 'none';
       } else {
+        playGround.style.minWidth='53vh';
+        playGround.style.minHeight='53vh';
+        startText.style.fontSize='1rem';
+
         moveOptionBoard.classList.add('game-option-move-below600px');
         pic.style.display = 'block';
       }
@@ -535,30 +546,39 @@ const moveOptionBoard = document.querySelector('.game-option');
       
 // Responsive
     // 1. Định nghĩa media query giống CSS
-    const mq = window.matchMedia('(max-width: 600px)');
+    const mq = window.matchMedia('(max-width: 768px)');
     // 2. Hàm update nội dung
     function updateContent(e) {
       const restartText = document.querySelector('.restart');
       const hideTime = document.querySelector('.timer > div > #name-Time');
-
       if (e.matches) {
         // Khi màn ≤ 600px (mobile)
         restartText.textContent = '⟳';
         pauseBtnIcon.style.display = 'none';
         hideTime.style.display='none';
+        pic.style.display = 'none';
+        playGround.style.minWidth='55vh';
+        playGround.style.minHeight='55vh';
+
+        moveOptionBoard.classList.remove('game-option-move-below600px');
+        document.querySelector('[onclick="showPreview()"]').setAttribute('onclick', 'showPreview600px()');
         // if (pic.style.display === 'block') {
-        //   pic.style.display = 'none';
         //   moveOptionBoard.classList.remove('game-option-move-below600px');
         // } else {
         //   moveOptionBoard.classList.add('game-option-move-below600px');
         //   pic.style.display = 'block';
         // }
-        document.querySelector('[onclick="showPreview()"]').setAttribute('onclick', 'showPreview600px()');
+
       } else {
         // Khi màn > 600px (tablet/desktop)
+        pic.style.display = 'none';
+        moveOptionBoard.classList.remove('game-option-move-below600px');
+        playGround.style.left='unset';
         restartText.textContent = '⟳Restart';
         pauseBtnIcon.style.display = '';
         hideTime.style.display='';
+        document.querySelector('[onclick="showPreview600px()"]').setAttribute('onclick', 'showPreview()');
+
       }
     }
 
