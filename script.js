@@ -572,6 +572,7 @@ const moveOptionBoard = document.querySelector('.game-option');
       } else {
         // Khi màn > 600px (tablet/desktop)
         pic.style.display = 'none';
+        startText.style.fontSize='1.5rem';
         moveOptionBoard.classList.remove('game-option-move-below600px');
         playGround.style.left='unset';
         restartText.textContent = '⟳Restart';

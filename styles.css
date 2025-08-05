@@ -124,8 +124,8 @@ button{
 
 .playground{
     position: absolute;
-    height: calc(370px + 15vw);
-    width: calc(370px + 15vw);
+    height: calc(370px + 25vh);
+    width: calc(370px + 25vh);
     left: 100px ;
     top: 115px;
 }
@@ -911,8 +911,11 @@ span{
     } */
 
     .playground{
-        left: 20vw  !important;
+        left: 18vw  !important;
         top: 125px;
+    }
+    .game-option{
+        right: 1vw !important;
     }
 }
 @media only screen and (max-width: 1200px) {
@@ -942,6 +945,7 @@ span{
     }
     .game-option{
         right: 2vw !important;
+        width: 35%;
     }
 
 }
