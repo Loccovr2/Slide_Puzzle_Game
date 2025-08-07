@@ -90,7 +90,7 @@ function startGame(){
 
 function buildGrid(p1){
       if (gameInProgress) {
-        const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
+        const ok = window.confirm('The game is still in progress, are you sure you want to restart?');
         if (!ok) return;               // Nếu Cancel thì dừng
         else {
           gameInProgress = false;
@@ -126,9 +126,10 @@ function buildGrid(p1){
         tile.appendChild(label);
         // Tạo thẻ img và gán src, alt
         const img = document.createElement('img');
-        img.src = pickingPicture;    
+        img.src = pickingPicture;   
         // Bỏ img vào div.tile
         tile.appendChild(img);
+      
         // Bỏ div.tile vào board-game
         boardGame.appendChild(tile);
       }      
@@ -287,6 +288,8 @@ function moveTile(tileValue) {
 
         previewBtn.style.pointerEvents = 'unset';
         previewBtn.style.visibility = 'hidden';
+        pic.style.display = 'none';
+
 
         btn.style.removeProperty('pointer-events');
         restartbtn.onclick = null;
@@ -303,7 +306,7 @@ function moveTile(tileValue) {
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
       setTimeout(() => {
-        alert('Chúc mừng bạn đã hoàn thành!');
+        alert('Congratulation!');
       }, 1000);  
       
 
@@ -327,7 +330,7 @@ function checkWin(table, size) {
     if (pic.classList.contains('choosing-pic')) return;
 
     if (gameInProgress) {
-      const ok = window.confirm('Trò chơi vẫn đang diễn ra, bạn có chắc muốn bắt đầu lại?');
+      const ok = window.confirm('The game is still in progress, are you sure you want to restart?');
       if (!ok) return;               // Nếu Cancel thì dừng
       else {
         gameInProgress = false;
@@ -360,9 +363,21 @@ function checkWin(table, size) {
     // Mở click game-option
     optionClick.style.pointerEvents='unset';
     optionClick.style.removeProperty('filter');
-    
-
+  
   }
+  
+  function choosingLevel(level){
+
+    if (level.classList.contains('choosing-pic')) return;
+    // 1) Xóa choosing-level khỏi tất cả thẻ a 
+    document.querySelectorAll('.dropdown-content a')
+      .forEach(t => t.classList.remove('choosing-level'));
+    // 2) Thêm choosing-level vào a
+    level.classList.add('choosing-level');
+  }
+
+
+
 
 
   // Hàm đếm lần di chuyển 
@@ -459,7 +474,7 @@ function checkWin(table, size) {
       if(!gameInProgress){
         return;
       } 
-      const proceed = window.confirm('Trò chơi vẫn đang diễn ra, bạn chắc chắn muốn tiếp tục?');
+      const proceed = window.confirm('The game is still in progress, are you sure you want to restart?');
       if (proceed) {
         // Người dùng chọn OK → làm tiếp hành động (ví dụ restart)
         gameInProgress=false;

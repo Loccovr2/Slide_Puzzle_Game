@@ -62,9 +62,27 @@ border-radius: 100px;
     
 }
 .blank{
+    /* position: absolute; */
     cursor: context-menu;
     display: none;
+    /* visibility: hidden; */
 }
+/* .blank::before{
+    position: absolute;
+    content: '';
+    background-color: red;
+    height: 100%; width: 100%;
+    z-index: 10;
+    opacity: 1 !important;
+    
+} */
+/* .blank-effect{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    z-index: 100;
+} */
+
 .tile:hover{
   border-width: 4px;
   border-style: solid;
@@ -95,7 +113,7 @@ border-radius: 100px;
 span.tile-number {
     z-index: 4;
     color: red;
-    font-size: 2rem;
+    font-size: 1.5rem;
     position: absolute;
     left: 10px;
 }
@@ -141,7 +159,7 @@ button{
     display: grid;
     /* box-shadow: 0 0 200px #0606a8, 0 0 500px #11036c; */
     /* background-image: conic-gradient(red,blue,green,yellow,red); */
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(0,0,0);
     /* background-image: url(sample_pic.jpg);
     background-size: contain; */
     grid-template-columns: repeat(var(--level),1fr); 
@@ -349,9 +367,14 @@ span{
 
 
 .dropdown-content a:hover {
-    color: #000000;
+    color: #000000 ;
     /* background-color: #f1f1f1; */
     background-position: 0% 0%;
+}
+
+.choosing-level{
+    color: #000000 !important;
+    background-position: 0% 0% !important;
 }
 
 .dropdown:hover .dropdown-content {
@@ -794,13 +817,14 @@ span{
     .settings-dropdown li {
       padding: 8px 12px;
       cursor: pointer;
-      color: gold   ;
+      color: white   ;
       background-color: transparent;
       border-top: 2px solid rgb(255, 255, 255);
     }
     .settings-dropdown li:hover {
-      background-image: linear-gradient(to right, #000dff, #b500f1);;
-      border-image: radial-gradient(circle,rgb(97, 63, 251) 50%, rgb(252, 70, 70) 100%) 1;
+      background-image: linear-gradient(to right, #1100ff,rgb(2, 255, 2));;
+      border-image: radial-gradient(circle, rgb(255, 4, 4) 100%) 1;
+      color: yellow   ;
 
     }
 
@@ -911,8 +935,11 @@ span{
     } */
 
     .playground{
-        left: 18vw  !important;
+        left: unset;
+        right: 35%;
         top: 125px;
+        /* width: 55vw !important; height: 55vw !important; */
+
     }
     .game-option{
         right: 1vw !important;
