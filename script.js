@@ -1,7 +1,7 @@
 
 const boardGame=document.querySelector('.board-game');
 let size = 3;
-let pickingPicture = `./assets/image/parrot.webp`;
+let pickingPicture = `./Assets/image/parrot.webp`;
 // const button = document.getElementById("testbtn");
 var playingTable;
 let gameInProgress=false;
@@ -101,8 +101,11 @@ function buildGrid(p1){
         startBtn.style.removeProperty('pointer-events');
         restartbtn.style.visibility='hidden';
         pauseBtn.style.visibility='hidden';
-        pauseBtnIcon.style.visibility='hidden';
-      size=p1;
+
+        pauseBtnIcon.style.visibility ='unset';
+
+        
+        size=p1;
       boardGame.innerHTML = '';
       resetStep();
 
@@ -263,16 +266,21 @@ function moveTile(tileValue) {
   // hiện nút pause và restart 
   restartbtn.style.visibility='visible';
   pauseBtn.style.visibility='visible';
-  pauseBtn.style.outline=''
+  pauseBtnIcon.style.visibility='visible';
+
+  pauseBtn.style.outline='';
   pauseBtn.childNodes[0].nodeValue = '⏸';
   pauseBtnIcon.innerText = 'Pause';
-  pauseBtnIcon.style.visibility='visible';
   // // show animation timer
   // document.documentElement.style.setProperty('--show-timer-animation', '1');
 
   if (checkWin(playingTable, size)) {
         gameInProgress=false;
         stopTimer();
+        // ẩn nút restar và pause sau khi win
+        restartbtn.style.visibility='hidden';
+        pauseBtn.style.visibility='hidden';
+        pauseBtnIcon.style.visibility='unset';
         // Bạn có thể thêm logic reset hoặc hiển thị kết quả ở đây
         document.querySelectorAll('.tile').forEach(tile => {
         tile.classList.add('stop-move');
@@ -297,17 +305,14 @@ function moveTile(tileValue) {
         pauseBtn.classList.add('no-pointer');
         startBtn.classList.remove('no-pointer');
 
-        // ẩn nút restar và pause sau khi win
-        restartbtn.style.visibility='hidden';
-        pauseBtn.style.visibility='hidden';
-        pauseBtnIcon.style.visibility='hidden';
+
 
         // startBtn.innerHTML='Play Again';
       // Cập nhật thành tích
       // Không cho thao tác với tile nữa
       setTimeout(() => {
         alert('Congratulation!');
-      }, 1000);  
+      }, 500);  
       
 
     }
@@ -360,6 +365,7 @@ function checkWin(table, size) {
     // Mơ cho phép nhấn Preview ảnh
     previewBtn.style.pointerEvents = 'unset';
     previewBtn.style.visibility = 'visible';
+    
     // Mở click game-option
     optionClick.style.pointerEvents='unset';
     optionClick.style.removeProperty('filter');
@@ -476,6 +482,9 @@ function checkWin(table, size) {
       } 
       const proceed = window.confirm('The game is still in progress, are you sure you want to restart?');
       if (proceed) {
+        restartbtn.style.visibility='hidden';
+        pauseBtn.style.visibility='hidden';
+        pauseBtnIcon.style.visibility='hidden';
         // Người dùng chọn OK → làm tiếp hành động (ví dụ restart)
         gameInProgress=false;
 
@@ -485,8 +494,7 @@ function checkWin(table, size) {
         
         document.documentElement.style.setProperty('--show-timer-animation', 'paused');
 
-        restartbtn.style.visibility='hidden';
-        pauseBtn.style.visibility='hidden';
+
         // timerAnimation();
 
       } else {
@@ -591,7 +599,7 @@ const moveOptionBoard = document.querySelector('.game-option');
         moveOptionBoard.classList.remove('game-option-move-below600px');
         playGround.style.left='unset';
         restartText.textContent = '⟳Restart';
-        pauseBtnIcon.style.display = '';
+        pauseBtnIcon.style.display = 'unset';
         hideTime.style.display='';
         document.querySelector('[onclick="showPreview600px()"]').setAttribute('onclick', 'showPreview()');
 

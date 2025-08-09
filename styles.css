@@ -169,9 +169,9 @@ button{
         'tile4 tile5 tile6'
         'tile7 tile8 tile9';
 }
-span{
+/* span{
     visibility: visible;
-}
+} */
 
 .choose-pic-notify{
    color: yellow;
@@ -533,9 +533,11 @@ span{
 .pause,.restart{
     visibility: hidden;
 }
-.pause  span{
-    visibility: visible;
+.pause span{
+    visibility: hidden;
 }
+
+
 
 .pause,.restart{
   display: flex;            
