@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="main-container">
-        
+
         <div class="page-header">
             <div class="logo">
                 <img class="logo-image">
@@ -22,20 +22,17 @@
                             <!-- <li onclick="alert('Profile')">Profile</li> -->
                             <!-- <li onclick="alert('Settings')">Settings</li> -->
                             <!-- <li onclick="alert('Logout')">Logout</li> -->
-                            <li onclick="alert('Profile')">Language</li>
+                            <!-- <li onclick="alert('Profile')">Language</li>
                             <li onclick="alert('Profile')">Dardmode/Lightmode</li>
-                            <li onclick="alert('Profile')">Animation</li>
+                            <li onclick="alert('Profile')">Animation</li> -->
                             <li  style="cursor: pointer;" onclick="window.open('https://www.wikihow.com/Solve-Slide-Puzzles', '_blank', 'noopener')">Turtorial</li>
+                            <li onclick="alert('Comming soon')">Comming soon</li>
+                            <li onclick="alert('Comming soon')">Comming soon</li>
+                            <li onclick="alert('Comming soon')">Comming soon</li>
                         </ul>
                 </div>
             </div>
         </div>
-        <!-- <button id="3x3" onclick="buildGrid(3)">3x3</button>
-        <button id="4x4" onclick="buildGrid(4)">4x4</button>
-        <button id="5x5" onclick="buildGrid(5)">5x5</button> -->
-
-
-
 
         <div class="playground">
             <div class="choose-pic-notify"><p>Choose picture in gallery</p></div>
@@ -59,14 +56,13 @@
             </div>
             <div class="dropdown-icon " onclick="showPreview()">
                 <div class="preview-icon"  title="Preview image">
-                    <img src="/Assets/icon/image-search.png" alt="preview">
+                    <img src="./Assets/icon/image-search.png" alt="preview">
                 </div>
                 <div class="dropdown-picture">
-                    <img src="Assets/image/parrot.webp" alt="preview-pic">
+                    <img src="./Assets/image/parrot.webp" alt="preview-pic">
                 </div>
             </div>
         </div>
-
 
         <div class="game-option ">
             <div class="controls">
@@ -83,24 +79,23 @@
             </div>
             
             <button id="merge" style="display: none;"> Merge </button>
-        <div class="controls3">
-            <div title="Show the number each tile" class="showTile" onclick="toggleTileNumber()"> Show Tile's Number </div>
-            <div class="dropdown">
-            <div class="dropbtn">Levels</div>
-                <div class="dropdown-content">
-                    <a id="lvl10" onclick="buildGrid(10);choosingLevel(this);">10x10</a>
-                    <a id="lvl9"  onclick="buildGrid(9);choosingLevel(this);">9x9</a>
-                    <a id="lvl8"  onclick="buildGrid(8);choosingLevel(this);">8x8</a>
-                    <a id="lvl7"  onclick="buildGrid(7);choosingLevel(this);">7x7</a>
-                    <a id="lvl6"  onclick="buildGrid(6);choosingLevel(this);">6x6</a>
-                    <a id="lvl5"  onclick="buildGrid(5);choosingLevel(this);">5x5</a>
-                    <a id="lvl4"  onclick="buildGrid(4);choosingLevel(this);">4x4</a>
-                    <a id="lvl3"  onclick="buildGrid(3);choosingLevel(this);">3x3</a>
+            <div class="controls3">
+                <div title="Show the number each tile" class="showTile" onclick="toggleTileNumber()"> Show Tile's Number </div>
+                <div class="dropdown">
+                <div class="dropbtn">Levels</div>
+                    <div class="dropdown-content">
+                        <a id="lvl10" onclick="buildGrid(10);choosingLevel(this);">10x10</a>
+                        <a id="lvl9"  onclick="buildGrid(9);choosingLevel(this);">9x9</a>
+                        <a id="lvl8"  onclick="buildGrid(8);choosingLevel(this);">8x8</a>
+                        <a id="lvl7"  onclick="buildGrid(7);choosingLevel(this);">7x7</a>
+                        <a id="lvl6"  onclick="buildGrid(6);choosingLevel(this);">6x6</a>
+                        <a id="lvl5"  onclick="buildGrid(5);choosingLevel(this);">5x5</a>
+                        <a id="lvl4"  onclick="buildGrid(4);choosingLevel(this);">4x4</a>
+                        <a id="lvl3"  onclick="buildGrid(3);choosingLevel(this);">3x3</a>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-
 
         <!-- <div class="rencently-play">
             <div class="level-collunm"></div>
@@ -123,11 +118,9 @@
                 <div title="Click to choose image for board-game" class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/game_art.jpg" alt="8"></div>
                 <div title="Click to choose image for board-game" class="gallery-pic" onclick="choosingPic(this)"><img class=" tile" src="./Assets/image/sample_pic.jpg" alt="9"></div>
                 <!-- <div class="" onclick="choosingPic(this)"><img class=" tile" src="./Assets/icon/add-add-plus-sign.jpg" alt="9">Add more image</div>   -->
-            </div>
-            
+            </div> 
         </div>
-        <!-- <button id="testbtn">test</button> -->
-        <!-- <img class="test" src="./Assets/image/original (1).webp" alt=""> -->
+
         <script src="script.js"></script>
     </div>
 </body>

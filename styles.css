@@ -24,7 +24,6 @@ body{
     /* display: flex; */
 }
 .main-container {
-  /* hoặc .main-container, .wrapper… tuỳ tên selector của bạn */
   position: relative;    /* giữ nguyên ở viewport */
   top: 0;
   left: 0;
@@ -67,21 +66,6 @@ border-radius: 100px;
     display: none;
     /* visibility: hidden; */
 }
-/* .blank::before{
-    position: absolute;
-    content: '';
-    background-color: red;
-    height: 100%; width: 100%;
-    z-index: 10;
-    opacity: 1 !important;
-    
-} */
-/* .blank-effect{
-    height: 100%;
-    width: 100%;
-    background-color: red;
-    z-index: 100;
-} */
 
 .tile:hover{
   border-width: 4px;
@@ -96,18 +80,6 @@ border-radius: 100px;
     box-shadow: none !important;
     cursor: default;
 }
-
-
-/* .tile::before{
-    position: absolute;
-    content: '';
-    width: 300px ;  
-    height: 300px;
-    /* background-image: conic-gradient(red,blue,green,yellow,red); */
-    /* z-index: 3;
-    }    
-*/
-
 
 
 span.tile-number {
@@ -180,54 +152,6 @@ button{
    align-content: center;
    justify-items: center;
 }
-
-/* .game-notify::before{
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: #00ec27;
-    opacity: 0.7;
-    filter: blur(20px);
-    z-index: -1;
-} */
- /* .game-notify{
-    bottom: 50%;
-} */
-/* .notify{
-    grid-area: notify;
-    text-align: center;
-    background-color: #00c3ff;
-    width: 100%;
-}
-.restart-game{
-    text-align: center;
-    grid-area: yes;
-    background-color: rgb(43, 72, 0);
-    width: 100px;
-}
-.continue-game{
-    text-align: center;
-    grid-area: no;
-    background-color: red;
-    width: 100px;
-}
-.ingame-notify{
-    background-color:rgb(1, 46, 91);
-    height: 50%;
-    width: 80%;
-    padding: 20px;
-    align-content: space-evenly;
-    justify-content: center;
-    display: grid;
-    grid-template-areas: 
-        'notify notify'
-        'yes no';
-    column-gap: 150px ;
-    /* row-gap: 20px; 
-    
-}
- */
 
 
 
@@ -744,91 +668,79 @@ button{
 }
 /* Setting */  
 /* Container chung */
-    .settings {
-        position: absolute;
-        display: inline-block;
-        width: 100%;
-        height: 50px;
-        top: 10px;
-        z-index: 3;
-        right: 0;
-    }
-
-    /* Nút kích hoạt dropdown */
-    .settings-button img{
-        z-index: 3;
-    }
-    .settings-button {
-      color: yellow;
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      user-select: none;
-      background-color: rgb(38, 3, 116);
-      border: 3px solid #0099ff;
-      position: absolute;
-      right: 10px;
-    }
-
-    /* Dropdown menu */
-    .settings-dropdown {
-      position: absolute;
-      top: 100%;       /* ngay dưới nút */
-      right: 10px;
-      padding: 0;
-      list-style: none;
-      /* border: 1px solid #ccc; */
-      border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      display: none;   /* ẩn mặc định */
-      width: 90%;
-      overflow: hidden;
-      z-index: 5;
-      opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-    }
-        @keyframes fadeIn {
-        0% { opacity: 0; }
-        50% { opacity: 0.5; }
-        100%{ opacity: 1; }
-        }
-    /* Khi mở */
-    .settings.open .settings-dropdown {
-      display: block;
-      
-    }
-
-    /* .settings-dropdown::before{
+.settings {
     position: absolute;
-    content: '';
-    cursor: pointer;
-    border-bottom-left-radius: 10px;
-    width: 250px;
-    height: 300px;
-    background-color: yellow;
-    z-index: -1;
-    top: 0;       
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    top: 10px;
+    z-index: 3;
     right: 0;
-    }
- */
+}
 
-    /* Các mục trong dropdown */
-    .settings-dropdown li {
-      padding: 8px 12px;
-      cursor: pointer;
-      color: white   ;
-      background-color: transparent;
-      border-top: 2px solid rgb(255, 255, 255);
-    }
-    .settings-dropdown li:hover {
-      background-image: linear-gradient(to right, #1100ff,rgb(2, 255, 2));;
-      border-image: radial-gradient(circle, rgb(255, 4, 4) 100%) 1;
-      color: yellow   ;
+/* Nút kích hoạt dropdown */
+.settings-button img{
+    z-index: 3;
+}
+.settings-button {
+    color: yellow;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgb(38, 3, 116);
+    border: 3px solid #0099ff;
+    position: absolute;
+    right: 10px;
+}
 
+/* Dropdown menu */
+.settings-dropdown {
+    position: absolute;
+    top: 100%;       /* ngay dưới nút */
+    right: 10px;
+    padding: 0;
+    list-style: none;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;   /* ẩn mặc định */
+    width: 90%;
+    overflow: hidden;
+    z-index: 5;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+    @keyframes fadeIn {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100%{ opacity: 1; }
     }
+/* Khi mở */
+.settings.open .settings-dropdown {
+    display: block;
+    
+}
+
+
+
+/* Các mục trong dropdown */
+.settings-dropdown li {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: white   ;
+    background-color: transparent;
+    border-top: 2px solid rgb(255, 255, 255);
+}
+.settings-dropdown li:hover {
+    background-image: linear-gradient(to right, #1100ff,rgb(2, 255, 2));;
+    border-image: radial-gradient(circle, rgb(255, 4, 4) 100%) 1;
+    color: yellow   ;
+
+}
 
 
 
@@ -886,44 +798,8 @@ button{
 
 }
 
-/* .dropdown-icon:active   img{
-    display: block;
-} */
-
-/* .test{
-    position: absolute;
-    top: 50%;
-    right: 50px;
-    height: 100px;
-    width: 100px;
-    z-index: 100;
-}
-
-.test::before{
-    content: '';
-    position: absolute;
-    top: -100px;
-    left: -100px;
-    background-color: yellow;
-    z-index: 40;
-} */
 
 /* Responsive */
-
-/* @media only screen and (max-width: 300px) {
-    .playground{
-        width: 100px; height: calc(100 + 60px);
-    }
-    .main-container{
-        display: flex; 
-        justify-content: center;
-    }
-    .board-game,.choose-pic-notify{
-        position: absolute;
-        height: calc(100% - 60px);
-        width: 100%;
-    }
-} */ 
 /* <600px, 601px,768px,992px,1200px */
 /* @media only screen and (max-width: 768px) and (min-width:  601px) {
     *{
@@ -1115,7 +991,7 @@ button{
         height: 200px;
         z-index: 15;
     }
-    .game-option-move-below600px{
+    .game-option-move-below768px{
         right: unset; 
         left: 10px !important;
         width: 40vw;
