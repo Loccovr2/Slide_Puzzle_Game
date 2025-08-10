@@ -67,7 +67,6 @@ function buildGrid(p1){
       startBtn.style.removeProperty('pointer-events');
     }  
   }
-  
   startBtn.style.removeProperty('pointer-events');
   restartbtn.style.visibility='hidden';
   pauseBtn.style.visibility='hidden';
@@ -225,7 +224,7 @@ function moveTile(tileValue) {
   // hiện nút pause và restart 
   restartbtn.style.visibility='visible';
   pauseBtn.style.visibility='visible';
-  pauseBtnIcon.style.visibility='visible';
+  // pauseBtnIcon.style.visibility='visible';
 
   pauseBtn.style.outline='';
   pauseBtn.childNodes[0].nodeValue = '⏸';
@@ -326,6 +325,7 @@ function choosingPic(pic) {
   
 // Thêm class css vào level đã chọn
 function choosingLevel(level){
+  if (gameInProgress) return;
   if (level.classList.contains('choosing-pic')) return;
   // 1) Xóa choosing-level khỏi tất cả thẻ a 
   document.querySelectorAll('.dropdown-content a')
@@ -471,14 +471,14 @@ function choosingLevel(level){
       playGround.style.minHeight='55vh';
       startText.style.fontSize='1.5rem';
 
-      moveOptionBoard.classList.remove('.game-option-move-below768px');
+      moveOptionBoard.classList.remove('game-option-move-below768px');
       pic.style.display = 'none';
     } else {
       playGround.style.minWidth='53vh';
       playGround.style.minHeight='53vh';
       startText.style.fontSize='1rem';
 
-      moveOptionBoard.classList.add('.game-option-move-below768px');
+      moveOptionBoard.classList.add('game-option-move-below768px');
       pic.style.display = 'block';
     }
   }
@@ -524,7 +524,7 @@ function choosingLevel(level){
       playGround.style.minWidth='55vh';
       playGround.style.minHeight='55vh';
 
-      moveOptionBoard.classList.remove('.game-option-move-below768px');
+      moveOptionBoard.classList.remove('game-option-move-below768px');
       document.querySelector('[onclick="showPreview()"]').setAttribute('onclick', 'showPreview768px()');
       // if (pic.style.display === 'block') {
       //   moveOptionBoard.classList.remove('game-option-move-below768px');
@@ -537,7 +537,7 @@ function choosingLevel(level){
       // Khi màn > 768px (tablet/desktop)
       pic.style.display = 'none';
       startText.style.fontSize='1.5rem';
-      moveOptionBoard.classList.remove('.game-option-move-below768px');
+      moveOptionBoard.classList.remove('game-option-move-below768px');
       playGround.style.left='unset';
       restartText.textContent = '⟳Restart';
       pauseBtnIcon.style.display = 'unset';
