@@ -34,6 +34,7 @@ It’s my **first real project**, built after 4 months of learning — and it ma
   <a href="https://github.com/Loccovr2/Slide_Puzzle_Game">
     <img src="./Assets/image/web_readme.png" alt="Web UI" >
   </a>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🎮 Main Components
 
@@ -58,6 +59,9 @@ It’s my **first real project**, built after 4 months of learning — and it ma
      - **Steps**: counts the number of tile moves made until the puzzle is completed.
      - **Levels**: hover to display a list of available difficulty levels to choose from.
      - **Show Tile Numbers**: toggle to display tile numbers for easier puzzle solving.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 🚀 Planned Features
 
 - **Add & use favorite images from the Gallery**
@@ -70,6 +74,7 @@ It’s my **first real project**, built after 4 months of learning — and it ma
 - **Ranking / Leaderboard**
   - Local leaderboard by difficulty (best time & fewest steps)
   - Online leaderboard in a future update
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🛠️ Build with
 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
@@ -77,6 +82,8 @@ It’s my **first real project**, built after 4 months of learning — and it ma
   <img src="https://skillicons.dev/icons?i=css" width="48" height="48" title="CSS" alt="CSS" >
   <img src="https://skillicons.dev/icons?i=js" width="48" height="48" title="Javascript" alt="JavaScript">
 </div>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📂 Getting Started
 
@@ -93,6 +100,8 @@ To open and play the Slide Puzzle game locally:
   - The game will load automatically with all the linked CSS, JavaScript, and images.
 
 💡**For the best experience** during development, open index.html using the Live Server extension in VSCode to automatically reload changes as you edit.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔑 License
 
