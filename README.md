@@ -39,7 +39,7 @@ It’s my **first real project**, built after 4 months of learning — and it ma
 ## 🎮 Main Components
 
 1. **Board Game**
-- A large game board that is easy to see on any screen size.
+- A large game board that is easy to see on any web screen size.
 - Difficulty levels ranging from **3x3** up to **10x10**.
 - Smooth animations and lively interactions for a more engaging experience.
 - A **preview button** next to the board to preview the completed image.
