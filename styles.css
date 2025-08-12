@@ -897,7 +897,7 @@ button{
     }
     
     .playground{
-        width: 53vh; height: 53vh;
+        width: 53vw; height: 53vw;
         /* min-width:calc(400px + 60px); min-height:400px ; */
 
         display: flex;
