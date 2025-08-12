@@ -1,3 +1,5 @@
+<a id="readme-top"></a>
+
 # SlideIt - Slide puzzle web game
 
 <summary>📑 Table of Contents</summary>
@@ -28,8 +30,9 @@ I designed it with a **colorful** and **easy-to-use** interface, so it’s great
 
 The main goal of this project was to **level up my frontend skills** by putting into practice what I’ve learned in **HTML**, **CSS**, and **JavaScript**.  
 It’s my **first real project**, built after 4 months of learning — and it marks an important step in my journey of becoming a better web developer.  
+
   <a href="https://github.com/Loccovr2/Slide_Puzzle_Game">
-    <img src="./Assets/image/web.png" alt="Web UI" width="200px" height="200px">
+    <img src="./Assets/image/web_readme.png" alt="Web UI" >
   </a>
 
 ## 🎮 Main Components
