@@ -2,7 +2,7 @@
 
 # SlideIt - Slide puzzle web game
 
-<summary>📑 Table of Contents</summary>
+## 📑 Table of Contents
 <ol>
   <li>
     <a href="#-project-overview">📝 Project Overview</a>
@@ -29,11 +29,20 @@
 I designed it with a **colorful** and **easy-to-use** interface, so it’s great for beginners, but also challenging enough for anyone who wants to test their skills with different difficulty levels or complete in the shortest time
 
 The main goal of this project was to **level up my frontend skills** by putting into practice what I’ve learned in **HTML**, **CSS**, and **JavaScript**.  
-It’s my **first real project**, built after 4 months of learning — and it marks an important step in my journey of becoming a better web developer.  
+It’s my **first personal project**, built in 3 weeks after 4 months of learning all of those — and it marks an important step in my journey of becoming a better web developer.  
 
   <a href="https://github.com/Loccovr2/Slide_Puzzle_Game">
-    <img src="./Assets/image/web_readme.png" alt="Web UI" >
+    <img src="./Assets/image/web_readme.png" alt="Web UI" title="Overview of the website interface" >
   </a>
+  <p></p>
+  
+
+<h3>You can quickly access the web using the link below </h3>
+<a href="https://loccovr2.github.io/Slide_Puzzle_Game/" target="_blank" rel="noopener noreferrer" >
+  https://loccovr2.github.io/Slide_Puzzle_Game/
+</a>
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🎮 Main Components
@@ -77,10 +86,10 @@ It’s my **first real project**, built after 4 months of learning — and it ma
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🛠️ Build with
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
-  <img src="https://skillicons.dev/icons?i=html" width="48" height="48" title="HTML" alt="HTML5">
-  <img src="https://skillicons.dev/icons?i=css" width="48" height="48" title="CSS" alt="CSS" >
-  <img src="https://skillicons.dev/icons?i=js" width="48" height="48" title="Javascript" alt="JavaScript">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; ">
+  <img src="https://skillicons.dev/icons?i=html" width="60" height="60" title="HTML" alt="HTML5">
+  <img src="https://skillicons.dev/icons?i=css" width="60" height="60" title="CSS" alt="CSS" >
+  <img src="https://skillicons.dev/icons?i=js" width="60" height="60" title="Javascript" alt="JavaScript">
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -105,6 +114,6 @@ To open and play the Slide Puzzle game locally:
 
 ## 🔑 License
 
-Distributed under the Unlicense License. See `LICENSE.txt` for more information.
+This project is licensed under the MIT license.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
